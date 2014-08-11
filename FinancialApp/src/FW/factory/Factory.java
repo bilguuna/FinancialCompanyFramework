@@ -8,10 +8,8 @@ import FW.DefaultCustomer;
 
 public class Factory implements IFactory {
 
-    private DefaultAccountForm defaultAcc;
-
     @Override
-    public Customer createCustomer() {
+    public Customer createCustomer(DefaultAccountForm defaultAcc) {
         return new DefaultCustomer(defaultAcc.getName(), defaultAcc.getStreet(), defaultAcc.getCity(), defaultAcc.getState(), defaultAcc.getZip(), defaultAcc.getEmail(), new DefaultAccount(defaultAcc.getAccountNumber()));
     }
 
