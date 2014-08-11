@@ -1,0 +1,164 @@
+package FW;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+public class FinancialApp extends JFrame {
+
+    private JPanel JPanel1 = new JPanel();
+    private JButton JButton_addAcc = new JButton();
+    private JButton JButton_Deposit = new JButton();
+    private JButton JButton_Withdraw = new JButton();
+    private JButton JButton_Exit = new JButton();
+    private DefaultTableModel model;
+    private JTable JTable1;
+    private JScrollPane JScrollPane1;
+
+    private FinancialApp framework;
+    private boolean newaccount;
+    private Object rowdata[];
+    private Invoker invoker = new Invoker();
+
+    public FinancialApp() {
+
+        framework = this;
+
+        setTitle("Financial Framework");
+        setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
+        getContentPane().setLayout(new BorderLayout(0, 0));
+        setSize(590, 330);
+        setVisible(false);
+        JPanel1.setLayout(null);
+        getContentPane().add(BorderLayout.CENTER, JPanel1);
+        JPanel1.setBounds(0, 0, 575, 310);
+        /*
+         /Add five buttons on the pane 
+         /for Adding personal account, Adding company account
+         /Deposit, Withdraw and Exit from the system
+         */
+        JScrollPane1 = new JScrollPane();
+        model = new DefaultTableModel();
+        JTable1 = new JTable(model);
+        model.addColumn("AccountNr");
+        model.addColumn("Name");
+        model.addColumn("City");
+        model.addColumn("P/C");
+        model.addColumn("Ch/S");
+        model.addColumn("Amount");
+        rowdata = new Object[8];
+        newaccount = false;
+
+        JPanel1.add(JScrollPane1);
+        JScrollPane1.setBounds(12, 92, 444, 160);
+        JScrollPane1.getViewport().add(JTable1);
+        JTable1.setBounds(0, 0, 420, 0);
+//        rowdata = new Object[8];
+
+        JButton_addAcc.setText("Add Default Account");
+        JPanel1.add(JButton_addAcc);
+        JButton_addAcc.setBounds(24, 20, 192, 33);
+
+        JButton_Deposit.setText("Deposit");
+        JPanel1.add(JButton_Deposit);
+        JButton_Deposit.setBounds(468, 104, 96, 33);
+        
+        JButton_Withdraw.setText("Withdraw");
+        JPanel1.add(JButton_Withdraw);
+        JButton_Withdraw.setBounds(468, 164, 96, 33);
+        
+        JButton_Exit.setText("Exit");
+        JPanel1.add(JButton_Exit);
+        JButton_Exit.setBounds(468, 248, 96, 31);
+        // lineBorder1.setRoundedCorners(true);
+        // lineBorder1.setLineColor(java.awt.Color.green);
+        //$$ lineBorder1.move(24,312);
+
+        JButton_addAcc.setActionCommand("jbutton");
+
+        SymWindow aSymWindow = new SymWindow();
+        this.addWindowListener(aSymWindow);
+        SymAction lSymAction = new SymAction();
+        JButton_Exit.addActionListener(lSymAction);
+        JButton_addAcc.addActionListener(lSymAction);
+        JButton_Deposit.addActionListener(lSymAction);
+        JButton_Withdraw.addActionListener(lSymAction);
+    }
+    
+    static public void main(String args[]) {
+        try {
+            // Add the following code if you want the Look and Feel
+            // to be set to the Look and Feel of the native system.
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception e) {
+                e.toString();
+            }
+            //Create a new instance of our application's frame, and make it visible.
+            (new FinancialApp()).setVisible(true);
+        } catch (Throwable t) {
+            t.printStackTrace();
+            //Ensure the application exits with an error condition.
+            System.exit(1);
+        }
+    }
+
+    class SymWindow extends WindowAdapter {
+
+        public void windowClosing(WindowEvent event) {
+            Object object = event.getSource();
+            if (object == this) {
+                framework_windowClosing(event);
+            }
+        }
+    }
+
+    class SymAction implements ActionListener {
+
+        public void actionPerformed(ActionEvent event) {
+            Object object = event.getSource();
+            if (object == JButton_Exit) {
+                JButtonExit_actionPerformed(event);
+            } else if(object == JButton_addAcc) {
+                JButtonAddDefault_actionPerformed(event);
+            }
+        }
+    }
+    
+    void JButtonExit_actionPerformed(ActionEvent event) {
+        System.exit(0);
+    }
+
+    void framework_windowClosing(java.awt.event.WindowEvent event) {
+        framework_windowClosing_Interaction1(event);
+    }
+
+    void framework_windowClosing_Interaction1(java.awt.event.WindowEvent event) {
+        try {
+            this.exitApplication();
+        } catch (Exception e) {
+            e.toString();
+        }
+    }
+
+    void exitApplication() {
+        try {
+            this.setVisible(false);    // hide the Frame
+            this.dispose();            // free the system resources
+            System.exit(0);            // close the application
+        } catch (Exception e) {
+            e.toString();
+        }
+    }
+    
+    void JButtonAddDefault_actionPerformed(ActionEvent event) {
+        DefaultAccountForm defaultAcc = new DefaultAccountForm();
+        defaultAcc.setBounds(450, 20, 300, 350);
+        defaultAcc.show();
+    }
+
+}
