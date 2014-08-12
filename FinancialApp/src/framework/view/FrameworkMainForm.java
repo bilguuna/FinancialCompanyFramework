@@ -5,8 +5,14 @@
  */
 package framework.view;
 
+import framework.Customer;
+import framework.IParty;
+import framework.Receiver;
+import framework.observer.Observer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
@@ -14,16 +20,18 @@ import javax.swing.JTable;
  *
  * @author mkong
  */
-public class FrameworkMainForm extends MainForm {
+public class FrameworkMainForm extends MainForm implements Observer {
 
     private JButton JButton_addAcc = new JButton();
     private SymAction lSymAction = new SymAction();
+    //private Receiver receiver = new Receiver();
 
     public FrameworkMainForm(String title) {
         super(title);
         JButton_addAcc.setActionCommand("jbutton");
         JButton_addAcc.addActionListener(lSymAction);
         drawButtons();
+        receiver.addObserver(this);
     }
 
     class SymAction implements ActionListener {
@@ -34,7 +42,7 @@ public class FrameworkMainForm extends MainForm {
             defaultAcc.setBounds(450, 20, 300, 350);
             defaultAcc.setVisible(true);
             defaultAcc.dispose();
-            refreshLIst();
+            //refreshLIst();
         }
     }
 
@@ -54,6 +62,17 @@ public class FrameworkMainForm extends MainForm {
         JButton_addAcc.setText("Add Default Account");
         JPanel1.add(JButton_addAcc);
         JButton_addAcc.setBounds(24, 20, 192, 33);
+    }
+
+    @Override
+    public void updateView() {
+        model.setRowCount(0);
+        Vector<IParty> customers = receiver.getCustomerList();
+        Iterator it = customers.iterator();
+        while (it.hasNext()) {
+            Customer cus = (Customer) it.next();
+            model.addRow(cus.getData());
+        }
     }
 
 }

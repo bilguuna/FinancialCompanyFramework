@@ -1,6 +1,7 @@
 package framework.view;
 
 import framework.*;
+import framework.observer.Observer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +12,7 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public abstract class MainForm extends JFrame {
+public abstract class MainForm extends JFrame{
 
     protected JPanel JPanel1 = new JPanel();
     private JButton JButton_Deposit = new JButton();
@@ -67,6 +68,8 @@ public abstract class MainForm extends JFrame {
         JButton_Exit.addActionListener(lSymAction);
         JButton_Deposit.addActionListener(lSymAction);
         JButton_Withdraw.addActionListener(lSymAction);
+        
+        //receiver.addObserver(this);
     }
     
     
@@ -133,7 +136,7 @@ public abstract class MainForm extends JFrame {
             depForm.setVisible(true);
             depForm.dispose();
         }
-        refreshLIst();
+        //refreshLIst();
     }
     
     void JButtonWithdraw_actionPerformed(ActionEvent event) {
@@ -145,7 +148,7 @@ public abstract class MainForm extends JFrame {
             depForm.setVisible(true);
             depForm.dispose();
         }
-        refreshLIst();
+        //refreshLIst();
     }
     
     public void refreshLIst() {
