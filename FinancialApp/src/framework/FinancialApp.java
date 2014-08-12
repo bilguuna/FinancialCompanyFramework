@@ -4,6 +4,7 @@ import framework.view.FrameworkMainForm;
 import framework.view.MainForm;
 
 public class FinancialApp {
+<<<<<<< HEAD
 //    public static void main(String[] args) {
 ////        String laf = UIManager.getSystemLookAndFeelClassName();
 ////        try {
@@ -20,4 +21,10 @@ public class FinancialApp {
 //        MainForm mainForm = new FrameworkMainForm("Financial Framework");
 //        mainForm.setVisible(true);
 //    }
+=======
+    public static void main(String[] args) {
+        MainForm mainForm = new FrameworkMainForm("Financial Framework");
+        mainForm.setVisible(true);
+    }
+>>>>>>> FETCH_HEAD
 }

@@ -4,10 +4,10 @@ import framework.Account;
 import framework.Customer;
 import framework.view.DefaultAccountForm;
 
-public abstract class AbstractFactory implements IFactory{
+public abstract class AbstractFactory<T> implements IFactory<T>{
     
     @Override
-    public abstract Customer createCustomer(DefaultAccountForm defaultAcc);
+    public abstract Customer createCustomer(T defaultAcc);
     @Override
     public abstract Account createAccount();
     

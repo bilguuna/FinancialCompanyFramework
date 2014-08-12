@@ -4,9 +4,9 @@ import framework.Account;
 import framework.Customer;
 import framework.view.DefaultAccountForm;
 
-public interface IFactory {
+public interface IFactory<T> {
     
-    public Customer createCustomer(DefaultAccountForm defaultAcc);
+    public Customer createCustomer(T defaultAcc);
     public Account createAccount();
     
 }

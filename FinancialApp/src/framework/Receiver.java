@@ -1,6 +1,8 @@
 package framework;
 
+import framework.functor.IFunctor;
 import framework.observer.Observer;
+import framework.predicate.IPredicate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,6 +31,12 @@ public class Receiver {
 
     public Vector<IParty> getCustomerList() {
         return customerList;
+    }
+    
+    public void doAll(IFunctor functor, IPredicate predicate) {
+        for(IParty customer : customerList) {
+            
+        }
     }
 
     public void deposit(String accountNumber, double value) {

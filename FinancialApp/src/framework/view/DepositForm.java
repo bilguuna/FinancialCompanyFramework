@@ -1,9 +1,12 @@
 package framework.view;
 
+import framework.IPerson;
 import framework.Invoker;
 import framework.Receiver;
 import framework.command.DepositCommand;
 import framework.command.ICommand;
+import framework.predicate.IPredicate;
+import framework.predicate.Predicate;
 
 public class DepositForm extends javax.swing.JDialog {
     private Receiver receiver;
@@ -76,6 +79,7 @@ public class DepositForm extends javax.swing.JDialog {
         double amount = 0;
         amount = Double.parseDouble(JTextField_Deposit.getText());
         ICommand depositCommand = new DepositCommand(receiver, accountNumber, amount);
+        IPredicate deposit = new Predicate(accountNumber);
         invoker.submit(depositCommand);
         this.hide();
         dispose();
