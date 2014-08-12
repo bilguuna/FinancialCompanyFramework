@@ -31,11 +31,6 @@ public class CreditCardCustomer extends DefaultCustomer {
         dateFormat = new SimpleDateFormat("MM/dd/yyyy");
     }
     
-    @Override
-    public void sendEmailToCustomer(IParty customer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * @return the ccNumber
      */
