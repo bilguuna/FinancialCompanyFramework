@@ -5,9 +5,11 @@
  */
 package bank.views;
 
+import bank.commands.AddInterestCommand;
 import framework.Customer;
 import framework.IParty;
 import framework.Receiver;
+import framework.command.ICommand;
 import framework.observer.Observer;
 import framework.view.DefaultAccountForm;
 import framework.view.MainForm;
@@ -56,7 +58,8 @@ public class BankMainForm extends MainForm implements Observer {
         public void actionPerformed(ActionEvent event) {
             Object object = event.getSource();
             if (object == JButton_Addinterest) {
-
+                ICommand addInterestCommand = new AddInterestCommand(receiver);
+                invoker.submit(addInterestCommand);
             } else {
                 DefaultAccountForm bankAccount = new BankAccountForm(invoker, receiver, ((JButton) object).getActionCommand());
                 bankAccount.setBounds(450, 20, 300, 350);
