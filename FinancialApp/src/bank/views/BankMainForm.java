@@ -39,6 +39,7 @@ public class BankMainForm extends MainForm implements Observer {
         receiver.addObserver(this);
         JButton_PerAC.addActionListener(lSymAction);
         JButton_CompAC.addActionListener(lSymAction);
+        JButton_Addinterest.addActionListener(lSymAction);
     }
 
     @Override
@@ -66,7 +67,6 @@ public class BankMainForm extends MainForm implements Observer {
                 bankAccount.setVisible(true);
                 bankAccount.dispose();
             }
-            //refreshLIst();
         }
     }
 

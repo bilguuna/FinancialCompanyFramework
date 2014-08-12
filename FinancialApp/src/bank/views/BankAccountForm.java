@@ -102,8 +102,6 @@ public class BankAccountForm extends DefaultAccountForm {
         IParty customer = factory.createCustomer(this);
         ICommand addCustomer = new AddBankCustomerCommand(this.receiver, customer);
         invoker.submit(addCustomer);
-//        this.receiver.print();
-
     }
 
     public JRadioButton getJRadioButton_Chk() {

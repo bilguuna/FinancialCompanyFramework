@@ -16,8 +16,8 @@ public class BankFactory<T> extends AbstractFactory<T>{
     public Customer createCustomer(T e) {
         BankAccountForm accountForm = (BankAccountForm)e;
         IAccount account = (accountForm.getJRadioButton_Chk().isSelected()) 
-                ? new CheckingsAccount(accountForm.getAccountNumber(), 0.8, "Checking")
-                : new SavingsAccount(accountForm.getAccountNumber(), 0.6, "Saving");
+                ? new CheckingsAccount(accountForm.getAccountNumber(), 0.08, "Checking")
+                : new SavingsAccount(accountForm.getAccountNumber(), 0.05, "Saving");
         
         if(accountForm.getCustomerType().equalsIgnoreCase("personal"))
             return new CustomerPerson(accountForm.getName(), accountForm.getStreet(), accountForm.getCity(), 
