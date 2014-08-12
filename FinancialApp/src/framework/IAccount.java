@@ -1,5 +1,7 @@
 package framework;
 
+import java.util.List;
+
 public interface IAccount {
     
     public void setBalance(double balance);
