@@ -2,7 +2,6 @@ package framework.factory;
 
 import framework.Account;
 import framework.Customer;
-import framework.view.DefaultAccountForm;
 
 public abstract class AbstractFactory<T> implements IFactory<T>{
     
