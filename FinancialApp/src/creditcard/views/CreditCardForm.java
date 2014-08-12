@@ -6,7 +6,6 @@
 
 package creditcard.views;
 
-import ccard.JDialogGenBill;
 import framework.Customer;
 import framework.IParty;
 import framework.Receiver;
@@ -72,7 +71,10 @@ public class CreditCardForm extends MainForm implements Observer {
         }
         
         void JButtonGenerateBill_actionPerformed(java.awt.event.ActionEvent event) {
-            JDialogGenBill billFrm = new JDialogGenBill();
+            int row = JTable1.getSelectedRow();
+            String accountNumber = String.valueOf(JTable1.getValueAt(row, 0));
+            System.out.print(accountNumber);
+            GenerateBillsForm billFrm = new GenerateBillsForm(receiver, invoker, accountNumber);
             billFrm.setBounds(450, 20, 400, 350);
             billFrm.setVisible(true);
 	}
