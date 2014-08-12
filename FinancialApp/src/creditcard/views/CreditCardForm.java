@@ -74,7 +74,7 @@ public class CreditCardForm extends MainForm implements Observer {
             int row = JTable1.getSelectedRow();
             String accountNumber = String.valueOf(JTable1.getValueAt(row, 0));
             System.out.print(accountNumber);
-            GenerateBillsForm billFrm = new GenerateBillsForm(receiver, invoker, accountNumber);
+            GenerateBillsForm billFrm = new GenerateBillsForm(receiver, invoker);
             billFrm.setBounds(450, 20, 400, 350);
             billFrm.setVisible(true);
 	}
