@@ -1,12 +1,13 @@
-package framework.factory;
+package bank.factory;
 
+import framework.factory.*;
 import framework.Account;
 import framework.Customer;
 import framework.DefaultAccount;
 import framework.view.DefaultAccountForm;
 import framework.DefaultCustomer;
 
-public class Factory<T> extends AbstractFactory<T>{
+public class SavingsBankFactory<T> extends AbstractFactory<T>{
 
     @Override
     public Customer createCustomer(T defaultAcc) {
