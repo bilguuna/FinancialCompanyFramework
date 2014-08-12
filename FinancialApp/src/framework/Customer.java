@@ -102,7 +102,8 @@ public abstract class Customer implements IParty {
             "Default", accounts.get(0).getBalance()};
     }
     
-    @Override
-    public abstract void sendEmailToCustomer(IParty customer);
+    public void sendEmailToCustomer() {
+        
+    }
     
 }
