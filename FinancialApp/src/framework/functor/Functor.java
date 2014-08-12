@@ -19,12 +19,12 @@ public class Functor implements IFunctor<IParty> {
             double oldAmount = ((Customer)customer).getAccount().getBalance();
             double newAmount = 0;
             newAmount = oldAmount + amount;
-            ((Customer)customer).getAccount().setBalance(newAmount);
+            ((Customer)customer).getAccount().deposit(newAmount);
         } else if (type.equals("withdraw")) {
             double oldAmount = ((Customer)customer).getAccount().getBalance();
             double newAmount = 0;
             newAmount = oldAmount - amount;
-            ((Customer)customer).getAccount().setBalance(newAmount);
+            ((Customer)customer).getAccount().withdraw(newAmount);
         }
     }
      

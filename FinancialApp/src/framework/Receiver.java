@@ -1,5 +1,6 @@
 package framework;
 
+import bank.models.BankAccount;
 import framework.functor.IFunctor;
 import framework.observer.Observer;
 import framework.predicate.IPredicate;
@@ -60,6 +61,17 @@ public class Receiver {
     public void withdraw(String accountNumber, double value) {
         Customer customer = this.getCustomerByAccountNumber(accountNumber);
         customer.getAccounts().get(0).withdraw(value);
+        updateView();
+    }
+    
+    public void addInterest() {
+        for(IParty party : getCustomerList()) {
+            Customer customer = (Customer)party;
+            for(IAccount account : customer.getAccounts()) {
+                BankAccount bankAccount = (BankAccount)account;
+                bankAccount.addInterest();
+            }
+        }
         updateView();
     }
 
