@@ -5,17 +5,17 @@ import framework.Receiver;
 
 public class AddDefaulAccountCommand implements ICommand {
     
-    private Receiver receiver;
+    //private Receiver receiver;
     private IParty customer;
 
-    public AddDefaulAccountCommand(Receiver receiver, IParty customer) {
-        this.receiver = receiver;
+    public AddDefaulAccountCommand(IParty customer) {
+        //this.receiver = Receiver.getInstance();
         this.customer = customer;
     }
     
     @Override
     public void execute() {
-        receiver.add(customer);
+        Receiver.getInstance().add(customer);
     }
     
 }

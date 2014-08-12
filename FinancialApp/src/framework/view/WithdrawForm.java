@@ -80,7 +80,7 @@ public class WithdrawForm extends javax.swing.JDialog {
         //ICommand command = new WithdrawCommand(receiver, accnr, amount);
         IPredicate predicate = new Predicate(accnr);
         IFunctor functor = new Functor("withdraw", amount);
-        ICommand command = new WithdrawCommand(receiver, functor, predicate);
+        ICommand command = new WithdrawCommand(functor, predicate);
         invoker.submit(command);
         dispose();
     }

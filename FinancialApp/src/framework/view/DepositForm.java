@@ -83,7 +83,7 @@ public class DepositForm extends javax.swing.JDialog {
         //ICommand depositCommand = new DepositCommand(receiver, accountNumber, amount);
         IPredicate predicate = new Predicate(accountNumber);
         IFunctor functor = new Functor("deposit", amount);
-        ICommand depositCommand = new DepositCommand(receiver, functor, predicate);
+        ICommand depositCommand = new DepositCommand(functor, predicate);
         invoker.submit(depositCommand);
         setVisible(false);
         dispose();

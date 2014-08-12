@@ -16,27 +16,27 @@ import framework.predicate.IPredicate;
  */
 public class WithdrawCommand implements ICommand {
 
-    private Receiver receiver;
+    //private Receiver receiver;
     private String accountNumber;
     private double amount;
     private IFunctor functor;
     private IPredicate predicate;
     
     public WithdrawCommand(Receiver receiver, String accountNumber, double amount) {
-        this.receiver = receiver;
+        //this.receiver = receiver;
         this.accountNumber = accountNumber;
         this.amount = amount;
     }
     
-    public WithdrawCommand(Receiver receiver, IFunctor functor, IPredicate predicate) {
-        this.receiver = receiver;
+    public WithdrawCommand(IFunctor functor, IPredicate predicate) {
+        //this.receiver = receiver;
         this.functor = functor;
         this.predicate = predicate;
     }
 
     @Override
     public void execute() {
-        receiver.withdraw(accountNumber, amount);
+        Receiver.getInstance().updateBalance(functor, predicate);
     }
     
 }

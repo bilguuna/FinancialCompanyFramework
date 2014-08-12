@@ -7,6 +7,7 @@ package framework.view;
 
 import framework.Customer;
 import framework.IParty;
+import framework.Receiver;
 import framework.observer.Observer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,13 +24,14 @@ public class FrameworkMainForm extends MainForm implements Observer {
 
     private JButton JButton_addAcc = new JButton();
     private SymAction lSymAction = new SymAction();
-    //private Receiver receiver = new Receiver();
+    private Receiver receiver;
 
     public FrameworkMainForm(String title) {
         super(title);
         JButton_addAcc.setActionCommand("jbutton");
         JButton_addAcc.addActionListener(lSymAction);
         drawButtons();
+        receiver = Receiver.getInstance();
         receiver.addObserver(this);
     }
 

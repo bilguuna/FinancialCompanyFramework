@@ -43,7 +43,6 @@ public class CreditCardAccountForm extends JDialog {
     JLabel JLabel7 = new JLabel();
     JLabel JLabel8 = new JLabel();
     JLabel JLabel9 = new JLabel();
-    JLabel JLabel10 = new JLabel();
     JTextField JTextField_NAME = new JTextField();
     JTextField JTextField_CT = new JTextField();
     JTextField JTextField_ST = new JTextField();
@@ -90,11 +89,6 @@ public class CreditCardAccountForm extends JDialog {
         getContentPane().setLayout(null);
         setSize(340, 350);
         setVisible(false);
-        
-        JLabel10.setText("Account Nr");
-        getContentPane().add(JLabel10);
-        JLabel10.setForeground(java.awt.Color.black);
-        JLabel10.setBounds(12, 48, 60, 24);
 
         JLabel1.setText("Name");
         getContentPane().add(JLabel1);
@@ -136,8 +130,6 @@ public class CreditCardAccountForm extends JDialog {
         JLabel9.setForeground(Color.black);
         JLabel9.setBounds(12, 240, 144, 24);
                 
-        getContentPane().add(JTextField_ACNR);
-        JTextField_ACNR.setBounds(120, 48, 156, 20);
         getContentPane().add(JTextField_NAME);
         JTextField_NAME.setBounds(120, 72, 156, 20);
         getContentPane().add(JTextField_CT);
@@ -164,6 +156,8 @@ public class CreditCardAccountForm extends JDialog {
         JButton_Calcel.setActionCommand("Cancel");
         getContentPane().add(JButton_Calcel);
         JButton_Calcel.setBounds(156, 276, 84, 24);
+//        getContentPane().add(JTextField_ACNR);
+//        JTextField_ACNR.setBounds(120, 72, 156, 20);
 		//}}
 
         //{{REGISTER_LISTENERS
@@ -203,7 +197,7 @@ public class CreditCardAccountForm extends JDialog {
         CreditCardCustomerFactory factory = new CreditCardCustomerFactory();
         IParty customer = factory.createCustomer(this);
         
-        ICommand addDefault = new AddDefaulAccountCommand(this.receiver, customer);
+        ICommand addDefault = new AddDefaulAccountCommand(customer);
         invoker.submit(addDefault);
 //        this.receiver.print();
         dispose();
