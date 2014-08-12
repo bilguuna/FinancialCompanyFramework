@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 /FinancialApp/dist/
 FinancialApp/nbproject/private/private.xml
 
 FinancialApp/nbproject/private/private.properties
 /FinancialApp/nbproject/private/
 /FinancialApp/build/
+=======
+/FinancialApp/dist/
+FinancialApp/nbproject/private/private.xml
+
+FinancialApp/nbproject/private/private.properties
+*.properties
+*.class
+*.properties
+>>>>>>> origin/master
