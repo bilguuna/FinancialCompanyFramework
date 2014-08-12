@@ -9,6 +9,7 @@ package creditcard.views;
 import creditcard.models.CreditCardCustomer;
 import framework.Customer;
 import framework.IParty;
+import framework.Receiver;
 import framework.observer.Observer;
 import framework.view.MainForm;
 import framework.view.WithdrawForm;
@@ -28,12 +29,14 @@ public class CreditCardForm extends MainForm implements Observer {
 
     private JButton JButton_addAcc = new JButton();
     private SymAction lSymAction = new SymAction();
+    private Receiver receiver;
     
     public CreditCardForm(String title) {
         super(title);
         JButton_addAcc.setActionCommand("jbutton");
         JButton_addAcc.addActionListener(lSymAction);
         drawButtons();
+        receiver = Receiver.getInstance();
         receiver.addObserver(this);
     }
 
@@ -73,9 +76,9 @@ public class CreditCardForm extends MainForm implements Observer {
 
     @Override
     public final void drawButtons() {
-        JButton_addAcc.setText("Add Credit Card Account");
+        JButton_addAcc.setText("Add Credit-card Account");
         JPanel1.add(JButton_addAcc);
         JButton_addAcc.setBounds(24, 20, 192, 33);
-        super.JButton_Withdraw.setText("Charge");
+        JButton_Withdraw.setText("Charge");
     }
 }

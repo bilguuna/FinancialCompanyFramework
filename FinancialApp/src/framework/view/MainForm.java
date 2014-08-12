@@ -22,7 +22,7 @@ public abstract class MainForm extends JFrame{
     protected JTable JTable1;
     protected JScrollPane JScrollPane1;
     protected Invoker invoker = new Invoker();
-    protected Receiver receiver;
+    private Receiver receiver;
 
     public MainForm(String title) {
 
@@ -60,7 +60,7 @@ public abstract class MainForm extends JFrame{
         JButton_Deposit.addActionListener(lSymAction);
         JButton_Withdraw.addActionListener(lSymAction);
         
-        //receiver.addObserver(this);
+        receiver = Receiver.getInstance();
     }
     
     
