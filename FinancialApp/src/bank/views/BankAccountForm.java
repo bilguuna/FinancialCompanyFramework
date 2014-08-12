@@ -7,16 +7,12 @@ package bank.views;
 
 import bank.commands.AddBankCustomerCommand;
 import bank.factory.BankFactory;
-import bank.models.CheckingsAccount;
-import bank.models.SavingsAccount;
-import framework.IAccount;
 import framework.IParty;
 import framework.Invoker;
 import framework.Receiver;
 import framework.command.ICommand;
 import framework.factory.IFactory;
 import framework.view.DefaultAccountForm;
-import framework.view.MainForm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JRadioButton;
@@ -39,6 +35,7 @@ public class BankAccountForm extends DefaultAccountForm {
         this.invoker = invoker;
         this.customerType = customerType;
         JRadioButton_Chk.setText("Checkings");
+        JRadioButton_Chk.setSelected(true);
         JRadioButton_Chk.setActionCommand("Checkings");
         getContentPane().add(JRadioButton_Chk);
         JRadioButton_Chk.setBounds(36, 0, 84, 24);
@@ -94,7 +91,7 @@ public class BankAccountForm extends DefaultAccountForm {
     @Override
     public void JButtonOK_actionPerformed(ActionEvent event) {
         setAccountNumber(JTextField_ACNR.getText());
-        setName(JTextField_NAME.getText());
+        super.setName(JTextField_NAME.getText());
         setStreet(JTextField_STR.getText());
         setCity(JTextField_CT.getText());
         setState(JTextField_ST.getText());

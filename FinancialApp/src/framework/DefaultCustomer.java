@@ -1,11 +1,11 @@
 package framework;
 
 public class DefaultCustomer extends Customer {
-    
+
     public DefaultCustomer(String name, String street, String city, String State, String zip, String email, IAccount account) {
         super(name, street, city, State, zip, email);
         super.addAccount(account);
-        
+
     }
 
     @Override
@@ -16,6 +16,12 @@ public class DefaultCustomer extends Customer {
     @Override
     public void removeAccount(IAccount account) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object[] getData() {
+        return new Object[]{this.getAccounts().get(0).getAccountNumber(), this.getName(), getCity(), "Default",
+            "Default", getAccounts().get(0).getBalance()};
     }
 
 }
