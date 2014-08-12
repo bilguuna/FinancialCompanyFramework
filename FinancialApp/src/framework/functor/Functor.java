@@ -16,15 +16,9 @@ public class Functor implements IFunctor<IParty> {
     @Override
     public void updateBalance(IParty customer) {
         if(type.equals("deposit")) {
-            double oldAmount = ((Customer)customer).getAccount().getBalance();
-            double newAmount = 0;
-            newAmount = oldAmount + amount;
-            ((Customer)customer).getAccount().deposit(newAmount);
+            ((Customer)customer).getAccount().deposit(amount);
         } else if (type.equals("withdraw")) {
-            double oldAmount = ((Customer)customer).getAccount().getBalance();
-            double newAmount = 0;
-            newAmount = oldAmount - amount;
-            ((Customer)customer).getAccount().withdraw(newAmount);
+            ((Customer)customer).getAccount().withdraw(amount);
         }
     }
      
