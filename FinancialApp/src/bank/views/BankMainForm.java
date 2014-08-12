@@ -22,6 +22,7 @@ public class BankMainForm extends MainForm implements Observer {
     JButton JButton_PerAC = new javax.swing.JButton();
     JButton JButton_CompAC = new javax.swing.JButton();
     private SymAction lSymAction = new SymAction();
+    private Receiver receiver;
 
     public BankMainForm(String title) {
         super(title);
