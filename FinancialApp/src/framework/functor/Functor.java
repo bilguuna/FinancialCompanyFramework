@@ -1,22 +1,31 @@
 package framework.functor;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import framework.Customer;
+import framework.IParty;
 
-/**
- *
- * @author Marlin
- */
 public class Functor implements IFunctor {
     
     public String type;
+    private double amount;
+    
+    public Functor(String type, double amount) {
+        this.type = type;
+        this.amount = amount;
+    }
     
     @Override
-    public void updateBalance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateBalance(IParty customer) {
+        if(type.equals("deposit")) {
+            double oldAmount = ((Customer)customer).getAccount().getBalance();
+            double newAmount = 0;
+            newAmount = oldAmount + amount;
+            ((Customer)customer).getAccount().setBalance(newAmount);
+        } else if (type.equals("withdraw")) {
+            double oldAmount = ((Customer)customer).getAccount().getBalance();
+            double newAmount = 0;
+            newAmount = oldAmount - amount;
+            ((Customer)customer).getAccount().setBalance(newAmount);
+        }
     }
      
 }

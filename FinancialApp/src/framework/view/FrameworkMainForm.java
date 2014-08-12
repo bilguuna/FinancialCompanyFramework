@@ -7,7 +7,6 @@ package framework.view;
 
 import framework.Customer;
 import framework.IParty;
-import framework.Receiver;
 import framework.observer.Observer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

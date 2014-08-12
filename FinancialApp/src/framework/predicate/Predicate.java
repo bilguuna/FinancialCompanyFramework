@@ -6,6 +6,7 @@
 
 package framework.predicate;
 
+import framework.Customer;
 import framework.IParty;
 
 /**
@@ -22,8 +23,8 @@ public class Predicate implements IPredicate {
     
     @Override
     public boolean check(IParty customer) {
-        if(customer.equals(accountNumber)) {
-        
+        if(((Customer)customer).getAccount().getAccountNumber().equals(accountNumber)) {
+            return true;
         }
         return false;
     }

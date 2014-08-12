@@ -20,17 +20,17 @@ public class DefaultAccountForm extends JDialog {
     JLabel JLabel6 = new JLabel();
     JLabel JLabel7 = new JLabel();
     JLabel JLabel8 = new JLabel();
-    JTextField JTextField_NAME = new JTextField();
-    JTextField JTextField_CT = new JTextField();
-    JTextField JTextField_ST = new JTextField();
-    JTextField JTextField_STR = new JTextField();
-    JTextField JTextField_ZIP = new JTextField();
-    JTextField JTextField_EM = new JTextField();
-    JButton JButton_OK = new JButton();
+    protected JTextField JTextField_NAME = new JTextField();
+    protected JTextField JTextField_CT = new JTextField();
+    protected JTextField JTextField_ST = new JTextField();
+    protected JTextField JTextField_STR = new JTextField();
+    protected JTextField JTextField_ZIP = new JTextField();
+    protected JTextField JTextField_EM = new JTextField();
+    protected JButton JButton_OK = new JButton();
     JButton JButton_Calcel = new JButton();
-    JTextField JTextField_ACNR = new JTextField();
+    protected JTextField JTextField_ACNR = new JTextField();
     
-    private String AccountNumber;
+    private String accountNumber;
     private String name;
     private String street;
     private String city;
@@ -140,7 +140,7 @@ public class DefaultAccountForm extends JDialog {
     }
 
     void JButtonOK_actionPerformed(ActionEvent event) {
-        AccountNumber = JTextField_ACNR.getText();
+        accountNumber = JTextField_ACNR.getText();
         name = JTextField_NAME.getText();
         street = JTextField_STR.getText();
         city = JTextField_CT.getText();
@@ -162,7 +162,7 @@ public class DefaultAccountForm extends JDialog {
     }
 
     public String getAccountNumber() {
-        return AccountNumber;
+        return accountNumber;
     }
 
     public String getStreet() {
@@ -187,6 +187,34 @@ public class DefaultAccountForm extends JDialog {
     
     public String getName() {
         return name;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public JButton getJButton_OK() {
+        return JButton_OK;
     }
     
 }

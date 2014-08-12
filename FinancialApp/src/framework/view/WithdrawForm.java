@@ -4,6 +4,10 @@ import framework.Invoker;
 import framework.Receiver;
 import framework.command.ICommand;
 import framework.command.WithdrawCommand;
+import framework.functor.Functor;
+import framework.functor.IFunctor;
+import framework.predicate.IPredicate;
+import framework.predicate.Predicate;
 
 public class WithdrawForm extends javax.swing.JDialog {
 
@@ -73,7 +77,10 @@ public class WithdrawForm extends javax.swing.JDialog {
     void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
         double amount = 0;
         amount = Double.parseDouble(JTextField_AMT.getText());
-        ICommand command = new WithdrawCommand(receiver, accnr, amount);
+        //ICommand command = new WithdrawCommand(receiver, accnr, amount);
+        IPredicate predicate = new Predicate(accnr);
+        IFunctor functor = new Functor("withdraw", amount);
+        ICommand command = new WithdrawCommand(receiver, functor, predicate);
         invoker.submit(command);
         dispose();
     }

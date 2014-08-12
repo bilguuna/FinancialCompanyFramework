@@ -7,6 +7,8 @@
 package framework.command;
 
 import framework.Receiver;
+import framework.functor.IFunctor;
+import framework.predicate.IPredicate;
 
 /**
  *
@@ -17,16 +19,25 @@ public class DepositCommand implements ICommand {
     private Receiver receiver;
     private String accountNumber;
     private double amount;
+    private IFunctor functor;
+    private IPredicate predicate;
     
     public DepositCommand(Receiver receiver, String accountNumber, double amount) {
         this.receiver = receiver;
         this.accountNumber = accountNumber;
         this.amount = amount;
     }
+    
+    public DepositCommand(Receiver receiver, IFunctor functor, IPredicate predicate) {
+        this.receiver = receiver;
+        this.functor = functor;
+        this.predicate = predicate;
+    }
 
     @Override
     public void execute() {
-        receiver.deposit(accountNumber, amount);
+        //receiver.deposit(accountNumber, amount);
+        receiver.doAll(functor, predicate);
     }
     
 }

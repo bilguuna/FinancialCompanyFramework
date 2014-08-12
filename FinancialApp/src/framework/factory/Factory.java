@@ -9,8 +9,8 @@ import framework.DefaultCustomer;
 public class Factory<T> extends AbstractFactory<T>{
 
     @Override
-    public Customer createCustomer(T e) {
-        DefaultAccountForm accountForm = (DefaultAccountForm)e;
+    public Customer createCustomer(T defaultAcc) {
+        DefaultAccountForm accountForm = (DefaultAccountForm)defaultAcc;
         return new DefaultCustomer(accountForm.getName(), accountForm.getStreet(), accountForm.getCity(), 
                 accountForm.getState(), accountForm.getZip(), accountForm.getEmail(), new DefaultAccount(accountForm.getAccountNumber()));
     }

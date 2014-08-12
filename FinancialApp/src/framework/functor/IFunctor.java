@@ -1,7 +1,9 @@
 package framework.functor;
 
+import framework.IParty;
+
 public interface IFunctor {
     
-    public void updateBalance();
+    public void updateBalance(IParty customer);
     
 }

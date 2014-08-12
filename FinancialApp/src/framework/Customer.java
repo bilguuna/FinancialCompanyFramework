@@ -8,16 +8,16 @@ public abstract class Customer implements IParty {
     private String name;
     private String street;
     private String city;
-    private String state;
+    private String State;
     private String zip;
     private String email;
     private List<IAccount> accounts = new ArrayList<IAccount>();
 
-    public Customer(String name, String street, String city, String state, String zip, String email) {
+    public Customer(String name, String street, String city, String State, String zip, String email) {
         this.name = name;
         this.street = street;
         this.city = city;
-        this.state = state;
+        this.State = State;
         this.zip = zip;
         this.email = email;
 //        this.account = account;
@@ -58,11 +58,11 @@ public abstract class Customer implements IParty {
     }
 
     public String getState() {
-        return state;
+        return State;
     }
 
     public void setState(String State) {
-        this.state = State;
+        this.State = State;
     }
 
     public String getZip() {
@@ -94,7 +94,7 @@ public abstract class Customer implements IParty {
     
     @Override
     public String toString() {
-        return "Customer{" + "name=" + name + ", street=" + street + ", city=" + city + ", State=" + state + ", zip=" + zip + ", email=" + email + ", account=" + accounts.get(0).getAccountNumber() + '}';
+        return "Customer{" + "name=" + name + ", street=" + street + ", city=" + city + ", State=" + State + ", zip=" + zip + ", email=" + email + ", account=" + accounts.get(0).getAccountNumber() + '}';
     }
     
     public Object[] getData() {
@@ -102,7 +102,8 @@ public abstract class Customer implements IParty {
             "Default", accounts.get(0).getBalance()};
     }
     
-    @Override
-    public abstract void sendEmailToCustomer(IParty customer);
+    public void sendEmailToCustomer() {
+        
+    }
     
 }
