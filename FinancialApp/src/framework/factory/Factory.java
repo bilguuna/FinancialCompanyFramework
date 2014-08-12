@@ -6,11 +6,13 @@ import framework.DefaultAccount;
 import framework.view.DefaultAccountForm;
 import framework.DefaultCustomer;
 
-public class Factory extends AbstractFactory{
+public class Factory<T> extends AbstractFactory<T>{
 
     @Override
-    public Customer createCustomer(DefaultAccountForm defaultAcc) {
-        return new DefaultCustomer(defaultAcc.getName(), defaultAcc.getStreet(), defaultAcc.getCity(), defaultAcc.getState(), defaultAcc.getZip(), defaultAcc.getEmail(), new DefaultAccount(defaultAcc.getAccountNumber()));
+    public Customer createCustomer(T defaultAcc) {
+        DefaultAccountForm accountForm = (DefaultAccountForm)defaultAcc;
+        return new DefaultCustomer(accountForm.getName(), accountForm.getStreet(), accountForm.getCity(), 
+                accountForm.getState(), accountForm.getZip(), accountForm.getEmail(), new DefaultAccount(accountForm.getAccountNumber()));
     }
 
     @Override
