@@ -151,7 +151,7 @@ public class DefaultAccountForm extends JDialog {
         Factory factory = new Factory();
         IParty customer = factory.createCustomer(this);
         
-        ICommand addDefault = new AddDefaulAccountCommand(this.receiver, customer);
+        ICommand addDefault = new AddDefaulAccountCommand(customer);
         invoker.submit(addDefault);
         this.receiver.print();
         

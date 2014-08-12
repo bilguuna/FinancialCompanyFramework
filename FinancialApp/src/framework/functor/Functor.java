@@ -3,7 +3,7 @@ package framework.functor;
 import framework.Customer;
 import framework.IParty;
 
-public class Functor implements IFunctor {
+public class Functor implements IFunctor<IParty> {
     
     public String type;
     private double amount;

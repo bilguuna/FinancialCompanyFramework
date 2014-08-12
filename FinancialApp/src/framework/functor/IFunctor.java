@@ -2,8 +2,8 @@ package framework.functor;
 
 import framework.IParty;
 
-public interface IFunctor {
+public interface IFunctor<T> {
     
-    public void updateBalance(IParty customer);
+    public void updateBalance(T t);
     
 }

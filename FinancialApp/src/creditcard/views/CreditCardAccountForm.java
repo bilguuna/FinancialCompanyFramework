@@ -197,7 +197,7 @@ public class CreditCardAccountForm extends JDialog {
         CreditCardCustomerFactory factory = new CreditCardCustomerFactory();
         IParty customer = factory.createCustomer(this);
         
-        ICommand addDefault = new AddDefaulAccountCommand(this.receiver, customer);
+        ICommand addDefault = new AddDefaulAccountCommand(customer);
         invoker.submit(addDefault);
 //        this.receiver.print();
         dispose();

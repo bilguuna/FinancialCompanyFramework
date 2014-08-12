@@ -22,7 +22,7 @@ public abstract class MainForm extends JFrame{
     protected JTable JTable1;
     protected JScrollPane JScrollPane1;
     protected Invoker invoker = new Invoker();
-    protected Receiver receiver = new Receiver();
+    protected Receiver receiver;
 
     public MainForm(String title) {
 
@@ -122,7 +122,7 @@ public abstract class MainForm extends JFrame{
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
         if (selection >= 0) {
             String accnr = (String) model.getValueAt(selection, 0);
-            DepositForm depForm = new DepositForm(this.receiver, this.invoker, accnr);
+            DepositForm depForm = new DepositForm(Receiver.getInstance(), this.invoker, accnr);
             depForm.setBounds(450, 20, 300, 350);
             depForm.setVisible(true);
             depForm.dispose();
@@ -134,7 +134,7 @@ public abstract class MainForm extends JFrame{
         int selection = JTable1.getSelectionModel().getMinSelectionIndex();
         if (selection >= 0) {
             String accnr = (String) model.getValueAt(selection, 0);
-            WithdrawForm depForm = new WithdrawForm(this.receiver, this.invoker, accnr);
+            WithdrawForm depForm = new WithdrawForm(Receiver.getInstance(), this.invoker, accnr);
             depForm.setBounds(450, 20, 300, 350);
             depForm.setVisible(true);
             depForm.dispose();

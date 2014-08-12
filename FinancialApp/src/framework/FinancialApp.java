@@ -20,4 +20,5 @@ public class FinancialApp {
         MainForm mainForm = new FrameworkMainForm("Financial Framework");
         mainForm.setVisible(true);
     }
+    
 }

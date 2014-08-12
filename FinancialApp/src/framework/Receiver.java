@@ -15,22 +15,17 @@ public class Receiver {
     
     private static Receiver instance = null;
     
-    public Receiver() {
+    private Receiver() {
         customerList = new Vector<>();
         observers = new ArrayList<>();
     }
     
     public static Receiver getInstance() {
         if(instance == null) {
-            return new Receiver();
+            instance = new Receiver();
         }
         return instance;
     }
-
-    /*public Receiver() {
-        customerList = new Vector<>();
-        observers = new ArrayList<>();
-    }*/
 
     public void add(IParty customer) {
         customerList.add(customer);
@@ -47,7 +42,7 @@ public class Receiver {
         return customerList;
     }
     
-    public void doAll(IFunctor functor, IPredicate predicate) {
+    public void updateBalance(IFunctor functor, IPredicate predicate) {
         for(IParty customer : customerList) {
             if(predicate.check(customer)) {
                 functor.updateBalance(customer);
