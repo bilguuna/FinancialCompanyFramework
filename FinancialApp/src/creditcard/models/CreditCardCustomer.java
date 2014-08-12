@@ -7,6 +7,8 @@
 package creditcard.models;
 
 import framework.Customer;
+import framework.DefaultCustomer;
+import framework.IAccount;
 import framework.IParty;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,15 +17,15 @@ import java.util.Date;
  *
  * @author javkhlant
  */
-public class CreditCardCustomer extends Customer {
+public class CreditCardCustomer extends DefaultCustomer {
 
     private String ccNumber;
     private Date expireDate;
-    private SimpleDateFormat dateFormat;
+    private final SimpleDateFormat dateFormat;
 
     public CreditCardCustomer(String name, String street, String city, String state, 
-            String zip, String email, String ccNumber, Date expireDate) {
-        super(name, street, city, state, zip, email);
+            String zip, String email, IAccount account, String ccNumber, Date expireDate) {
+        super(name, street, city, state, zip, email, account);
         this.ccNumber = ccNumber;
         this.expireDate = expireDate;
         dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -59,12 +61,12 @@ public class CreditCardCustomer extends Customer {
     
     @Override
     public Object[] getData() {
-        return new Object[]{getName(), getCcNumber(), dateFormat.format(getExpireDate()), "Credit Card", 0};
+        return new Object[]{getAccount().getAccountNumber(), getName(), getCcNumber(), dateFormat.format(getExpireDate()), "Credit Card", 0};
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "name=" + getName() + ", street=" + getStreet() + ", city=" 
+        return "Customer{" + "name=" + getAccount().getAccountNumber() + "name=" + getName() + ", street=" + getStreet() + ", city=" 
                 + getCity() + ", state=" + getState() + ", zip=" + getZip() + ", email=" 
                 + getEmail() + ", ccNumber=" + getCcNumber() + ", ExpireDate=" + getExpireDate() + '}';
     }

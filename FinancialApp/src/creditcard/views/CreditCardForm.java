@@ -9,8 +9,8 @@ package creditcard.views;
 import framework.Customer;
 import framework.IParty;
 import framework.observer.Observer;
-import framework.view.DefaultAccountForm;
 import framework.view.MainForm;
+import framework.view.WithdrawForm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -60,9 +60,10 @@ public class CreditCardForm extends MainForm implements Observer {
 
     @Override
     public void drawColumns() {
-        String[] columns = new String[]{"Name", "CC number", "Expire date", "Type", "Balance"};
-        for (int i = 0; i < columns.length; i++) {
-            model.addColumn(columns[i]);
+        String[] columns = new String[]{"Account Nr", "Name", "CC number", 
+            "Expire date", "Type", "Balance"};
+        for (String column : columns) {
+            model.addColumn(column);
         }
         JTable1 = new JTable(model);
         JTable1.setBounds(0, 0, 420, 0);
@@ -70,10 +71,9 @@ public class CreditCardForm extends MainForm implements Observer {
     }
 
     @Override
-    public void drawButtons() {
+    public final void drawButtons() {
         JButton_addAcc.setText("Add Credit Card Account");
         JPanel1.add(JButton_addAcc);
         JButton_addAcc.setBounds(24, 20, 192, 33);
     }
-    
 }

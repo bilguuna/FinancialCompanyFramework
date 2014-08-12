@@ -1,30 +1,37 @@
-package framework.view;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package creditcard.views;
 
 import framework.Invoker;
 import framework.Receiver;
 import framework.command.ICommand;
 import framework.command.WithdrawCommand;
-import framework.functor.Functor;
-import framework.functor.IFunctor;
-import framework.predicate.IPredicate;
-import framework.predicate.Predicate;
+import javax.swing.JDialog;
 
-public class WithdrawForm extends javax.swing.JDialog {
+/**
+ *
+ * @author JChimidregzen
+ */
+public class ChargeForm extends JDialog {
 
     private String accnr;
     private Receiver receiver;
     private Invoker invoker;
 
-    public WithdrawForm(Receiver receiver, Invoker invoker, String aaccnr) {
+    public ChargeForm(Receiver receiver, Invoker invoker, String aaccnr) {
         accnr = aaccnr;
         this.receiver = receiver;
         this.invoker = invoker;
-	setTitle("Withdraw");
+	setTitle("Charge Account");
         setModal(true);
         getContentPane().setLayout(null);
         setSize(300, 160);
         setVisible(false);
-        JLabel1.setText("Acc Nr");
+        JLabel1.setText("Name");
         getContentPane().add(JLabel1);
         JLabel1.setForeground(java.awt.Color.black);
         JLabel1.setBounds(12, 12, 48, 24);
@@ -64,6 +71,7 @@ public class WithdrawForm extends javax.swing.JDialog {
 
     class SymAction implements java.awt.event.ActionListener {
 
+        @Override
         public void actionPerformed(java.awt.event.ActionEvent event) {
             Object object = event.getSource();
             if (object == JButton_OK) {
@@ -77,10 +85,7 @@ public class WithdrawForm extends javax.swing.JDialog {
     void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
         double amount = 0;
         amount = Double.parseDouble(JTextField_AMT.getText());
-        //ICommand command = new WithdrawCommand(receiver, accnr, amount);
-        IPredicate predicate = new Predicate(accnr);
-        IFunctor functor = new Functor("withdraw", amount);
-        ICommand command = new WithdrawCommand(functor, predicate);
+        ICommand command = new WithdrawCommand(receiver, accnr, amount);
         invoker.submit(command);
         dispose();
     }

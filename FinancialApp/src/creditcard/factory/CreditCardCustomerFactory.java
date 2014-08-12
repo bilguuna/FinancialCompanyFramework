@@ -10,6 +10,7 @@ import creditcard.models.CreditCardCustomer;
 import creditcard.views.CreditCardAccountForm;
 import framework.Account;
 import framework.Customer;
+import framework.DefaultAccount;
 import framework.factory.AbstractFactory;
 
 /**
@@ -29,6 +30,8 @@ public class CreditCardCustomerFactory<T> extends AbstractFactory<T> {
         
         CreditCardAccountForm form = (CreditCardAccountForm) e;
         return new CreditCardCustomer(form.getName(), form.getStreet(), 
-                form.getCity(), form.getState(), form.getZip(), form.getEmail(), form.getCcNumber(), form.getExpireDate());
+                form.getCity(), form.getState(), form.getZip(), form.getEmail(), 
+                new DefaultAccount(form.getAccountNumber()), form.getCcNumber(), 
+                form.getExpireDate());
     }
 }
