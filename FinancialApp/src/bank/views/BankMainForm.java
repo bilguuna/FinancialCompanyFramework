@@ -5,6 +5,7 @@
  */
 package bank.views;
 
+import framework.Receiver;
 import framework.observer.Observer;
 import framework.view.DefaultAccountForm;
 import framework.view.MainForm;
@@ -25,6 +26,7 @@ public class BankMainForm extends MainForm implements Observer {
     public BankMainForm(String title) {
         super(title);
         drawButtons();
+        receiver = Receiver.getInstance();
         receiver.addObserver(this);
         JButton_PerAC.addActionListener(lSymAction);
     }
