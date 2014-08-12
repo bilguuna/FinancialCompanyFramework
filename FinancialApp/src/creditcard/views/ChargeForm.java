@@ -1,75 +1,82 @@
-package framework.view;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-import framework.IPerson;
+package creditcard.views;
+
 import framework.Invoker;
 import framework.Receiver;
-import framework.command.DepositCommand;
 import framework.command.ICommand;
-import framework.predicate.IPredicate;
-import framework.predicate.Predicate;
+import framework.command.WithdrawCommand;
+import javax.swing.JDialog;
 
-public class DepositForm extends javax.swing.JDialog {
+/**
+ *
+ * @author JChimidregzen
+ */
+public class ChargeForm extends JDialog {
+
+    private String accnr;
     private Receiver receiver;
     private Invoker invoker;
-    private String accountNumber;
 
-    public DepositForm(Receiver receiver, Invoker invoker, String accountNumber) {
+    public ChargeForm(Receiver receiver, Invoker invoker, String aaccnr) {
+        accnr = aaccnr;
         this.receiver = receiver;
         this.invoker = invoker;
-        this.accountNumber = accountNumber;
-        setTitle("Deposit");
+	setTitle("Charge Account");
         setModal(true);
         getContentPane().setLayout(null);
-        setSize(290, 140);
+        setSize(300, 160);
         setVisible(false);
-        JLabel1.setText("Acc Nr");
+        JLabel1.setText("Name");
         getContentPane().add(JLabel1);
         JLabel1.setForeground(java.awt.Color.black);
         JLabel1.setBounds(12, 12, 48, 24);
         JLabel2.setText("Amount");
         getContentPane().add(JLabel2);
         JLabel2.setForeground(java.awt.Color.black);
-        JLabel2.setBounds(12, 48, 48, 24);
+        JLabel2.setBounds(12, 36, 48, 24);
         JTextField_NAME.setEditable(false);
-        JTextField_NAME.setText(accountNumber);
+        JTextField_NAME.setText(accnr);
         getContentPane().add(JTextField_NAME);
-        JTextField_NAME.setBounds(84, 12, 144, 24);
+        JTextField_NAME.setBounds(84, 12, 156, 20);
+        getContentPane().add(JTextField_AMT);
+        JTextField_AMT.setBounds(84, 36, 156, 20);
         JButton_OK.setText("OK");
         JButton_OK.setActionCommand("OK");
         getContentPane().add(JButton_OK);
-        JButton_OK.setBounds(36, 84, 84, 24);
-        JButton_Cancel.setText("Cancel");
-        JButton_Cancel.setActionCommand("Cancel");
-        getContentPane().add(JButton_Cancel);
-        JButton_Cancel.setBounds(156, 84, 84, 24);
-        getContentPane().add(JTextField_Deposit);
-        JTextField_Deposit.setBounds(84, 48, 144, 24);
-        //}}
-        //JTextField_NAME.setText(accnr);
+        JButton_OK.setBounds(48, 84, 84, 24);
+        JButton_Calcel.setText("Cancel");
+        JButton_Calcel.setActionCommand("Cancel");
+        getContentPane().add(JButton_Calcel);
+        JButton_Calcel.setBounds(156, 84, 84, 24);
 
-        //{{REGISTER_LISTENERS
+        JTextField_NAME.setText(accnr);
+
         SymAction lSymAction = new SymAction();
         JButton_OK.addActionListener(lSymAction);
-        JButton_Cancel.addActionListener(lSymAction);
-        //}}
+        JButton_Calcel.addActionListener(lSymAction);
+
     }
 
-    //{{DECLARE_CONTROLS
     javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
     javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
     javax.swing.JTextField JTextField_NAME = new javax.swing.JTextField();
+    javax.swing.JTextField JTextField_AMT = new javax.swing.JTextField();
     javax.swing.JButton JButton_OK = new javax.swing.JButton();
-    javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
-    javax.swing.JTextField JTextField_Deposit = new javax.swing.JTextField();
-	//}}
+    javax.swing.JButton JButton_Calcel = new javax.swing.JButton();
 
     class SymAction implements java.awt.event.ActionListener {
 
+        @Override
         public void actionPerformed(java.awt.event.ActionEvent event) {
             Object object = event.getSource();
             if (object == JButton_OK) {
                 JButtonOK_actionPerformed(event);
-            } else if (object == JButton_Cancel) {
+            } else if (object == JButton_Calcel) {
                 JButtonCalcel_actionPerformed(event);
             }
         }
@@ -77,16 +84,13 @@ public class DepositForm extends javax.swing.JDialog {
 
     void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
         double amount = 0;
-        amount = Double.parseDouble(JTextField_Deposit.getText());
-        ICommand depositCommand = new DepositCommand(receiver, accountNumber, amount);
-        IPredicate deposit = new Predicate(accountNumber);
-        invoker.submit(depositCommand);
-        setVisible(false);
+        amount = Double.parseDouble(JTextField_AMT.getText());
+        ICommand command = new WithdrawCommand(receiver, accnr, amount);
+        invoker.submit(command);
         dispose();
     }
 
     void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
         dispose();
     }
-
 }
