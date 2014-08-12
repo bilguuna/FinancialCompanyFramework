@@ -8,16 +8,16 @@ public abstract class Customer implements IParty {
     private String name;
     private String street;
     private String city;
-    private String State;
+    private String state;
     private String zip;
     private String email;
     private List<IAccount> accounts = new ArrayList<IAccount>();
 
-    public Customer(String name, String street, String city, String State, String zip, String email) {
+    public Customer(String name, String street, String city, String state, String zip, String email) {
         this.name = name;
         this.street = street;
         this.city = city;
-        this.State = State;
+        this.state = state;
         this.zip = zip;
         this.email = email;
 //        this.account = account;
@@ -58,11 +58,11 @@ public abstract class Customer implements IParty {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String State) {
-        this.State = State;
+        this.state = State;
     }
 
     public String getZip() {
@@ -94,7 +94,7 @@ public abstract class Customer implements IParty {
     
     @Override
     public String toString() {
-        return "Customer{" + "name=" + name + ", street=" + street + ", city=" + city + ", State=" + State + ", zip=" + zip + ", email=" + email + ", account=" + accounts.get(0).getAccountNumber() + '}';
+        return "Customer{" + "name=" + name + ", street=" + street + ", city=" + city + ", State=" + state + ", zip=" + zip + ", email=" + email + ", account=" + accounts.get(0).getAccountNumber() + '}';
     }
     
     public Object[] getData() {

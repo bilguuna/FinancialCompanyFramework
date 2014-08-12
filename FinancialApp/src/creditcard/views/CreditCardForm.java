@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JTable;
 
 /**
@@ -49,7 +50,7 @@ public class CreditCardForm extends MainForm implements Observer {
     class SymAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
-            DefaultAccountForm defaultAcc = new DefaultAccountForm(invoker, receiver);
+            JDialog defaultAcc = new CreditCardAccountForm(invoker, receiver);
             defaultAcc.setBounds(450, 20, 300, 350);
             defaultAcc.setVisible(true);
             defaultAcc.dispose();
@@ -70,7 +71,7 @@ public class CreditCardForm extends MainForm implements Observer {
 
     @Override
     public void drawButtons() {
-        JButton_addAcc.setText("Add Default Account");
+        JButton_addAcc.setText("Add Credit Card Account");
         JPanel1.add(JButton_addAcc);
         JButton_addAcc.setBounds(24, 20, 192, 33);
     }

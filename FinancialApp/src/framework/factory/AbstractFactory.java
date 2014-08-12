@@ -2,12 +2,12 @@ package framework.factory;
 
 import framework.Account;
 import framework.Customer;
-import framework.view.DefaultAccountForm;
 
 public abstract class AbstractFactory<T> implements IFactory<T>{
     
     @Override
-    public abstract Customer createCustomer(T defaultAcc);
+    public abstract Customer createCustomer(T e);
+    
     @Override
     public abstract Account createAccount();
     

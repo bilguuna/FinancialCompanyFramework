@@ -6,6 +6,7 @@
 
 package creditcard.views;
 
+import creditcard.factory.CreditCardCustomerFactory;
 import framework.IParty;
 import framework.Invoker;
 import framework.Receiver;
@@ -13,8 +14,15 @@ import framework.command.AddDefaulAccountCommand;
 import framework.command.ICommand;
 import framework.factory.Factory;
 import framework.view.DefaultAccountForm;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -34,12 +42,15 @@ public class CreditCardAccountForm extends JDialog {
     JLabel JLabel6 = new JLabel();
     JLabel JLabel7 = new JLabel();
     JLabel JLabel8 = new JLabel();
+    JLabel JLabel9 = new JLabel();
     JTextField JTextField_NAME = new JTextField();
     JTextField JTextField_CT = new JTextField();
     JTextField JTextField_ST = new JTextField();
     JTextField JTextField_STR = new JTextField();
     JTextField JTextField_ZIP = new JTextField();
     JTextField JTextField_EM = new JTextField();
+    JTextField ccNumberField = new JTextField();
+    JTextField expireDateField = new JTextField();
     JButton JButton_OK = new JButton();
     JButton JButton_Calcel = new JButton();
     JTextField JTextField_ACNR = new JTextField();
@@ -51,6 +62,9 @@ public class CreditCardAccountForm extends JDialog {
     private String state;
     private String zip;
     private String email;
+    private String ccNumber;
+    private Date expireDate;
+    private SimpleDateFormat dateFormat;
     
     private DefaultAccountForm defaultAcc;
     private Invoker invoker;
@@ -59,6 +73,7 @@ public class CreditCardAccountForm extends JDialog {
     public CreditCardAccountForm(Invoker invoker, Receiver receiver) {
         this.invoker = invoker;
         this.receiver = receiver;
+        dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         //defaultAcc = new DefaultAccountForm();
         
         //new DefaultAccountForm();
@@ -69,59 +84,70 @@ public class CreditCardAccountForm extends JDialog {
         // what Visual Cafe can generate, or Visual Cafe may be unable to back
         // parse your Java file into its visual environment.
         //{{INIT_CONTROLS
-        setTitle("Add Default Account");
+        setTitle("Add Credit Card Account");
         setModal(true);
         getContentPane().setLayout(null);
         setSize(340, 350);
         setVisible(false);
-        
-        JLabel8.setText("Acc Number");
-        getContentPane().add(JLabel8);
-        JLabel8.setForeground(java.awt.Color.black);
-        JLabel8.setBounds(12, 72, 60, 24);
 
         JLabel1.setText("Name");
         getContentPane().add(JLabel1);
         JLabel1.setForeground(java.awt.Color.black);
-        JLabel1.setBounds(12, 96, 48, 24);
+        JLabel1.setBounds(12, 72, 60, 24);
         
         JLabel2.setText("Street");
         getContentPane().add(JLabel2);
         JLabel2.setForeground(java.awt.Color.black);
-        JLabel2.setBounds(12, 120, 48, 24);
+        JLabel2.setBounds(12, 96, 48, 24);
         
         JLabel3.setText("City");
         getContentPane().add(JLabel3);
         JLabel3.setForeground(java.awt.Color.black);
-        JLabel3.setBounds(12, 144, 48, 24);
+        JLabel3.setBounds(12, 120, 48, 24);
         
         JLabel4.setText("State");
         getContentPane().add(JLabel4);
         JLabel4.setForeground(java.awt.Color.black);
-        JLabel4.setBounds(12, 168, 48, 24);
+        JLabel4.setBounds(12, 144, 48, 24);
         
         JLabel5.setText("Zip");
         getContentPane().add(JLabel5);
         JLabel5.setForeground(java.awt.Color.black);
-        JLabel5.setBounds(12, 192, 48, 24);
+        JLabel5.setBounds(12, 168, 48, 24);
         
         JLabel7.setText("Email");
         getContentPane().add(JLabel7);
         JLabel7.setForeground(java.awt.Color.black);
-        JLabel7.setBounds(12, 216, 96, 24);
+        JLabel7.setBounds(12, 192, 48, 24);
+        
+        JLabel8.setText("CC number");
+        getContentPane().add(JLabel8);
+        JLabel8.setForeground(Color.black);
+        JLabel8.setBounds(12, 216, 96, 24);
+        
+        JLabel9.setText("Expire date");
+        getContentPane().add(JLabel9);
+        JLabel9.setForeground(Color.black);
+        JLabel9.setBounds(12, 240, 144, 24);
                 
         getContentPane().add(JTextField_NAME);
-        JTextField_NAME.setBounds(120, 96, 156, 20);
+        JTextField_NAME.setBounds(120, 72, 156, 20);
         getContentPane().add(JTextField_CT);
-        JTextField_CT.setBounds(120, 144, 156, 20);
+        JTextField_CT.setBounds(120, 96, 156, 20);
         getContentPane().add(JTextField_ST);
-        JTextField_ST.setBounds(120, 168, 156, 20);
+        JTextField_ST.setBounds(120, 144, 156, 20);
         getContentPane().add(JTextField_STR);
-        JTextField_STR.setBounds(120, 120, 156, 20);
+        JTextField_STR.setBounds(120, 168, 156, 20);
         getContentPane().add(JTextField_ZIP);
-        JTextField_ZIP.setBounds(120, 192, 156, 20);
+        JTextField_ZIP.setBounds(120, 120, 156, 20);
         getContentPane().add(JTextField_EM);
-        JTextField_EM.setBounds(120, 216, 156, 20);
+        JTextField_EM.setBounds(120, 192, 156, 20);
+        getContentPane().add(ccNumberField);
+        ccNumberField.setBounds(120, 216, 156, 20);
+        getContentPane().add(expireDateField);
+        expireDateField.setBounds(120, 240, 156, 20);
+        expireDateField.setText(dateFormat.format(new Date()));
+        expireDateField.setEditable(false);
         JButton_OK.setText("OK");
         JButton_OK.setActionCommand("OK");
         getContentPane().add(JButton_OK);
@@ -130,8 +156,8 @@ public class CreditCardAccountForm extends JDialog {
         JButton_Calcel.setActionCommand("Cancel");
         getContentPane().add(JButton_Calcel);
         JButton_Calcel.setBounds(156, 276, 84, 24);
-        getContentPane().add(JTextField_ACNR);
-        JTextField_ACNR.setBounds(120, 72, 156, 20);
+//        getContentPane().add(JTextField_ACNR);
+//        JTextField_ACNR.setBounds(120, 72, 156, 20);
 		//}}
 
         //{{REGISTER_LISTENERS
@@ -161,12 +187,18 @@ public class CreditCardAccountForm extends JDialog {
         state = JTextField_ST.getText();
         zip = JTextField_ZIP.getText();
         email = JTextField_EM.getText();
+        ccNumber = ccNumberField.getText();
+        try {
+            expireDate = dateFormat.parse(expireDateField.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(CreditCardAccountForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        Factory factory = new Factory();
-//        IParty customer = factory.createCustomer(this);
+        CreditCardCustomerFactory factory = new CreditCardCustomerFactory();
+        IParty customer = factory.createCustomer(this);
         
-//        ICommand addDefault = new AddDefaulAccountCommand(this.receiver, customer);
-//        invoker.submit(addDefault);
+        ICommand addDefault = new AddDefaulAccountCommand(this.receiver, customer);
+        invoker.submit(addDefault);
         this.receiver.print();
         
     }
@@ -201,5 +233,13 @@ public class CreditCardAccountForm extends JDialog {
     
     public String getName() {
         return name;
+    }
+    
+    public String getCcNumber() {
+        return ccNumber;
+    }
+    
+    public Date getExpireDate() {
+        return expireDate;
     }
 }
