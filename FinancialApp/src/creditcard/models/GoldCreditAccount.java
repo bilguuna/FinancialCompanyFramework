@@ -6,11 +6,14 @@
 
 package creditcard.models;
 
+import framework.IAccount;
+
 /**
  *
  * @author JChimidregzen
  */
 public class GoldCreditAccount extends CreditCardAccount {
+    
     private double x;
     private double y;
     
@@ -20,14 +23,19 @@ public class GoldCreditAccount extends CreditCardAccount {
         y = 0.12;
     }
 
-    @Override
-    public double getNewMonthlyBalance() {
-        for(this.get)
-        return 0;
-    }
+//    @Override
+//    public double getNewMonthlyBalance(IAccount account) {
+//        for()
+//        return 0;
+//    }
 
     @Override
     public double getMonthlyAmountDue() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public double getNewMonthlyBalance() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
