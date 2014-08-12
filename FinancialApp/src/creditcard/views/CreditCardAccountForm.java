@@ -199,8 +199,8 @@ public class CreditCardAccountForm extends JDialog {
         
         ICommand addDefault = new AddDefaulAccountCommand(this.receiver, customer);
         invoker.submit(addDefault);
-        this.receiver.print();
-        
+//        this.receiver.print();
+        dispose();
     }
     
     void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {
@@ -231,6 +231,7 @@ public class CreditCardAccountForm extends JDialog {
         return email;
     }
     
+    @Override
     public String getName() {
         return name;
     }

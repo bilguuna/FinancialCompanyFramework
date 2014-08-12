@@ -8,6 +8,7 @@ package creditcard.models;
 
 import framework.Customer;
 import framework.IParty;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -18,12 +19,14 @@ public class CreditCardCustomer extends Customer {
 
     private String ccNumber;
     private Date expireDate;
+    private SimpleDateFormat dateFormat;
 
     public CreditCardCustomer(String name, String street, String city, String state, 
             String zip, String email, String ccNumber, Date expireDate) {
         super(name, street, city, state, zip, email);
         this.ccNumber = ccNumber;
         this.expireDate = expireDate;
+        dateFormat = new SimpleDateFormat("MM/dd/yyyy");
     }
     
     @Override
@@ -61,7 +64,7 @@ public class CreditCardCustomer extends Customer {
     
     @Override
     public Object[] getData() {
-        return new Object[]{getName(), getCcNumber(), getExpireDate(), "Credit Card", 0};
+        return new Object[]{getName(), getCcNumber(), dateFormat.format(getExpireDate()), "Credit Card", 0};
     }
 
     @Override
