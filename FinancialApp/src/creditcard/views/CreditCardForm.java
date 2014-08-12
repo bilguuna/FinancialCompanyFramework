@@ -6,13 +6,12 @@
 
 package creditcard.views;
 
-import creditcard.models.CreditCardCustomer;
+import ccard.JDialogGenBill;
 import framework.Customer;
 import framework.IParty;
 import framework.Receiver;
 import framework.observer.Observer;
 import framework.view.MainForm;
-import framework.view.WithdrawForm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -27,14 +26,16 @@ import javax.swing.JTable;
  */
 public class CreditCardForm extends MainForm implements Observer {
 
-    private JButton JButton_addAcc = new JButton();
+    private JButton JButtonNewCCAC = new JButton();
+    private JButton JButton_GenBill = new JButton();
     private SymAction lSymAction = new SymAction();
     private Receiver receiver;
     
     public CreditCardForm(String title) {
         super(title);
-        JButton_addAcc.setActionCommand("jbutton");
-        JButton_addAcc.addActionListener(lSymAction);
+//        JButton_addAcc.setActionCommand("jbutton");
+        JButtonNewCCAC.addActionListener(lSymAction);
+        JButton_GenBill.addActionListener(lSymAction);
         drawButtons();
         receiver = Receiver.getInstance();
         receiver.addObserver(this);
@@ -54,12 +55,27 @@ public class CreditCardForm extends MainForm implements Observer {
     class SymAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
+            
+            Object object = event.getSource();
+            if (object == JButtonNewCCAC)
+                    JButtonNewCCAC_actionPerformed(event);
+            else if (object == JButton_GenBill)
+                    JButtonGenerateBill_actionPerformed(event);
+        }
+        
+	void JButtonNewCCAC_actionPerformed(java.awt.event.ActionEvent event) {
             JDialog defaultAcc = new CreditCardAccountForm(invoker, receiver);
             defaultAcc.setBounds(450, 20, 300, 350);
             defaultAcc.setVisible(true);
             defaultAcc.dispose();
             refreshLIst();
         }
+        
+        void JButtonGenerateBill_actionPerformed(java.awt.event.ActionEvent event) {
+            JDialogGenBill billFrm = new JDialogGenBill();
+            billFrm.setBounds(450, 20, 400, 350);
+            billFrm.setVisible(true);
+	}
     }
 
     @Override
@@ -76,9 +92,15 @@ public class CreditCardForm extends MainForm implements Observer {
 
     @Override
     public final void drawButtons() {
-        JButton_addAcc.setText("Add Credit-card Account");
-        JPanel1.add(JButton_addAcc);
-        JButton_addAcc.setBounds(24, 20, 192, 33);
+        JButtonNewCCAC.setText("Add Credit-card Account");
+        JPanel1.add(JButtonNewCCAC);
+        JButtonNewCCAC.setBounds(24, 20, 192, 33);
+        
         JButton_Withdraw.setText("Charge");
+        
+        JButton_GenBill.setText("Generate Monthly bills");
+        JButton_GenBill.setActionCommand("jbutton");
+        JPanel1.add(JButton_GenBill);
+        JButton_GenBill.setBounds(240,20,192,33);
     }
 }
