@@ -4,12 +4,12 @@ import framework.command.*;
 import framework.IParty;
 import framework.Receiver;
 
-public class AddPersonallAccountCommand implements ICommand {
+public class AddBankCustomerCommand implements ICommand {
     
     private Receiver receiver;
     private IParty customer;
 
-    public AddPersonallAccountCommand(Receiver receiver, IParty customer) {
+    public AddBankCustomerCommand(Receiver receiver, IParty customer) {
         this.receiver = receiver;
         this.customer = customer;
     }
