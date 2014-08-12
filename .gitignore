@@ -1,2 +1,6 @@
 /FinancialApp/dist/
 /FinancialApp/build/
+*.class
+*.class
+FinancialApp/build/classes/framework/FinancialApp.class
+FinancialApp/build/classes/framework/FinancialApp.class
