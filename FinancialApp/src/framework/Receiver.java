@@ -12,11 +12,25 @@ public class Receiver {
 
     private Vector<IParty> customerList;
     private List<Observer> observers;
-
+    
+    private static Receiver instance = null;
+    
     public Receiver() {
         customerList = new Vector<>();
         observers = new ArrayList<>();
     }
+    
+    public static Receiver getInstance() {
+        if(instance == null) {
+            return new Receiver();
+        }
+        return instance;
+    }
+
+    /*public Receiver() {
+        customerList = new Vector<>();
+        observers = new ArrayList<>();
+    }*/
 
     public void add(IParty customer) {
         customerList.add(customer);
@@ -35,8 +49,11 @@ public class Receiver {
     
     public void doAll(IFunctor functor, IPredicate predicate) {
         for(IParty customer : customerList) {
-            
+            if(predicate.check(customer)) {
+                functor.updateBalance(customer);
+            }
         }
+        updateView();
     }
 
     public void deposit(String accountNumber, double value) {

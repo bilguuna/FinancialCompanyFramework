@@ -5,6 +5,8 @@ import framework.Invoker;
 import framework.Receiver;
 import framework.command.DepositCommand;
 import framework.command.ICommand;
+import framework.functor.Functor;
+import framework.functor.IFunctor;
 import framework.predicate.IPredicate;
 import framework.predicate.Predicate;
 
@@ -78,8 +80,10 @@ public class DepositForm extends javax.swing.JDialog {
     void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
         double amount = 0;
         amount = Double.parseDouble(JTextField_Deposit.getText());
-        ICommand depositCommand = new DepositCommand(receiver, accountNumber, amount);
-        IPredicate deposit = new Predicate(accountNumber);
+        //ICommand depositCommand = new DepositCommand(receiver, accountNumber, amount);
+        IPredicate predicate = new Predicate(accountNumber);
+        IFunctor functor = new Functor("deposit", amount);
+        ICommand depositCommand = new DepositCommand(receiver, functor, predicate);
         invoker.submit(depositCommand);
         this.hide();
         dispose();
