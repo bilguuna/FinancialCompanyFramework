@@ -11,25 +11,25 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class MainForm extends JFrame {
+public abstract class MainForm extends JFrame {
 
-    private JPanel JPanel1 = new JPanel();
-    private JButton JButton_addAcc = new JButton();
+    protected JPanel JPanel1 = new JPanel();
     private JButton JButton_Deposit = new JButton();
     private JButton JButton_Withdraw = new JButton();
     private JButton JButton_Exit = new JButton();
-    private DefaultTableModel model;
-    private JTable JTable1;
-    private JScrollPane JScrollPane1;
+    protected DefaultTableModel model;
+    protected JTable JTable1;
+    protected JScrollPane JScrollPane1;
 
     private MainForm framework;
     private boolean newaccount;
     private Object rowdata[];
-    private Invoker invoker = new Invoker();
-    private Receiver receiver = new Receiver();
+    protected Invoker invoker = new Invoker();
+    protected Receiver receiver = new Receiver();
     private String title;
     
-
+    //private Template template;
+        
     public MainForm(String title) {
 
         framework = this;
@@ -48,26 +48,16 @@ public class MainForm extends JFrame {
          /Deposit, Withdraw and Exit from the system
          */
         JScrollPane1 = new JScrollPane();
-        model = new DefaultTableModel();
-        JTable1 = new JTable(model);
-        model.addColumn("AccountNr");
-        model.addColumn("Name");
-        model.addColumn("City");
-        model.addColumn("Customer type");
-        model.addColumn("Account type");
-        model.addColumn("Amount");
-        rowdata = new Object[8];
         newaccount = false;
 
         JPanel1.add(JScrollPane1);
         JScrollPane1.setBounds(12, 92, 444, 160);
-        JScrollPane1.getViewport().add(JTable1);
-        JTable1.setBounds(0, 0, 420, 0);
+       
+        model = new DefaultTableModel();
+        drawColumns();
+//        drawButtons();
+        
 //        rowdata = new Object[8];
-
-        JButton_addAcc.setText("Add Default Account");
-        JPanel1.add(JButton_addAcc);
-        JButton_addAcc.setBounds(24, 20, 192, 33);
 
         JButton_Deposit.setText("Deposit");
         JPanel1.add(JButton_Deposit);
@@ -84,17 +74,19 @@ public class MainForm extends JFrame {
         // lineBorder1.setLineColor(java.awt.Color.green);
         //$$ lineBorder1.move(24,312);
 
-        JButton_addAcc.setActionCommand("jbutton");
-
         SymWindow aSymWindow = new SymWindow();
         this.addWindowListener(aSymWindow);
         SymAction lSymAction = new SymAction();
         JButton_Exit.addActionListener(lSymAction);
-        JButton_addAcc.addActionListener(lSymAction);
         JButton_Deposit.addActionListener(lSymAction);
         JButton_Withdraw.addActionListener(lSymAction);
     }
     
+    
+    public abstract void drawColumns();
+    
+    public abstract void drawButtons();
+
     class SymWindow extends WindowAdapter {
 
         public void windowClosing(WindowEvent event) {
@@ -111,8 +103,6 @@ public class MainForm extends JFrame {
             Object object = event.getSource();
             if (object == JButton_Exit) {
                 JButtonExit_actionPerformed(event);
-            } else if(object == JButton_addAcc) {
-                JButtonAddDefault_actionPerformed(event);
             } else if(object == JButton_Deposit) {
                 JButtonDeposit_actionPerformed(event);
             } else if(object == JButton_Withdraw) {
@@ -145,14 +135,6 @@ public class MainForm extends JFrame {
         } catch (Exception e) {
             e.toString();
         }
-    }
-    
-    void JButtonAddDefault_actionPerformed(ActionEvent event) {
-        DefaultAccountForm defaultAcc = new DefaultAccountForm(this.invoker, this.receiver);
-        defaultAcc.setBounds(450, 20, 300, 350);
-        defaultAcc.show();
-        defaultAcc.dispose();
-        refreshLIst();
     }
     
     void JButtonDeposit_actionPerformed(ActionEvent event) {
