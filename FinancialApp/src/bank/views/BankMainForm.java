@@ -5,6 +5,7 @@
  */
 package bank.views;
 
+import framework.observer.Observer;
 import framework.view.DefaultAccountForm;
 import framework.view.MainForm;
 import java.awt.event.ActionEvent;
@@ -16,23 +17,31 @@ import javax.swing.JTable;
  *
  * @author Bilguun
  */
-public class BankMainForm extends MainForm {
+public class BankMainForm extends MainForm implements Observer {
     JButton JButton_PerAC = new javax.swing.JButton();
     JButton JButton_CompAC = new javax.swing.JButton();
     private SymAction lSymAction = new SymAction();
 
     public BankMainForm(String title) {
         super(title);
+        drawButtons();
+        receiver.addObserver(this);
+        JButton_PerAC.addActionListener(lSymAction);
+    }
+
+    @Override
+    public void updateView() {
+        refreshLIst();;
     }
     
     class SymAction implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent event) {
-            DefaultAccountForm defaultAcc = new DefaultAccountForm(invoker, receiver);
-            defaultAcc.setBounds(450, 20, 300, 350);
-            defaultAcc.setVisible(true);
-            defaultAcc.dispose();
+            DefaultAccountForm bankAccount = new BankAccountForm(invoker, receiver, "asd");
+            bankAccount.setBounds(450, 20, 300, 350);
+            bankAccount.setVisible(true);
+            bankAccount.dispose();
             //refreshLIst();
         }
     }
@@ -50,7 +59,13 @@ public class BankMainForm extends MainForm {
 
     @Override
     public void drawButtons() {
-
+        JButton_PerAC.setText("Add personal account");
+        JPanel1.add(JButton_PerAC);
+        JButton_PerAC.setBounds(24, 20, 192, 33);
+        JButton_CompAC.setText("Add company account");
+        JButton_CompAC.setActionCommand("jbutton");
+        JPanel1.add(JButton_CompAC);
+        JButton_CompAC.setBounds(240, 20, 192, 33);
     }
-
+    
 }
