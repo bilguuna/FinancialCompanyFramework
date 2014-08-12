@@ -5,8 +5,6 @@
  */
 package bank.views;
 
-import bank.models.CustomerCompany;
-import bank.models.CustomerPerson;
 import framework.Customer;
 import framework.IParty;
 import framework.Receiver;
@@ -38,6 +36,7 @@ public class BankMainForm extends MainForm implements Observer {
         receiver = Receiver.getInstance();
         receiver.addObserver(this);
         JButton_PerAC.addActionListener(lSymAction);
+        JButton_CompAC.addActionListener(lSymAction);
     }
 
     @Override

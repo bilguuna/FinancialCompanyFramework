@@ -217,4 +217,8 @@ public class DefaultAccountForm extends JDialog {
         return JButton_OK;
     }
     
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }

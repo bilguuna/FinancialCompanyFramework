@@ -97,10 +97,7 @@ public abstract class Customer implements IParty {
         return "Customer{" + "name=" + name + ", street=" + street + ", city=" + city + ", State=" + State + ", zip=" + zip + ", email=" + email + ", account=" + accounts.get(0).getAccountNumber() + '}';
     }
     
-    public Object[] getData() {
-        return new Object[]{accounts.get(0).getAccountNumber(), name, city, "Default", 
-            "Default", accounts.get(0).getBalance()};
-    }
+    public abstract Object[] getData();
     
     public void sendEmailToCustomer() {
         
