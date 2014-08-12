@@ -5,11 +5,21 @@
  */
 package bank.views;
 
+import bank.commands.AddBankCustomerCommand;
+import bank.factory.BankFactory;
+import bank.models.CheckingsAccount;
+import bank.models.SavingsAccount;
+import framework.IAccount;
+import framework.IParty;
 import framework.Invoker;
 import framework.Receiver;
+import framework.command.ICommand;
+import framework.factory.IFactory;
 import framework.view.DefaultAccountForm;
+import framework.view.MainForm;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -17,13 +27,17 @@ import java.awt.event.ActionListener;
  */
 public class BankAccountForm extends DefaultAccountForm {
 
-    private String accountType;
+    private String customerType;
     javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
     javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
+    private Receiver receiver;
+    private Invoker invoker;
 
-    public BankAccountForm(Invoker invoker, Receiver receiver, String accountType) {
+    public BankAccountForm(Invoker invoker, Receiver receiver, String customerType) {
         super(invoker, receiver);
-        this.accountType = accountType;
+        this.receiver = receiver;
+        this.invoker = invoker;
+        this.customerType = customerType;
         JRadioButton_Chk.setText("Checkings");
         JRadioButton_Chk.setActionCommand("Checkings");
         getContentPane().add(JRadioButton_Chk);
@@ -37,7 +51,9 @@ public class BankAccountForm extends DefaultAccountForm {
         JRadioButton_Chk.addMouseListener(aSymMouse);
         JRadioButton_Sav.addMouseListener(aSymMouse);
         //removing action listener in the parent
-        this.getJButton_OK().removeActionListener(this.getJButton_OK().getActionListeners()[0]);
+//        this.getJButton_OK().removeActionListener(this.getJButton_OK().getActionListeners()[0]);
+//        SymActionOk lSymAction = new SymActionOk();
+//        this.getJButton_OK().addActionListener(lSymAction);
     }
 
     class SymMouse extends java.awt.event.MouseAdapter {
@@ -50,6 +66,13 @@ public class BankAccountForm extends DefaultAccountForm {
             } else if (object == JRadioButton_Sav) {
                 JRadioButtonSav_mouseClicked(event);
             }
+        }
+    }
+
+    class SymActionOk implements ActionListener {
+
+        public void actionPerformed(ActionEvent event) {
+            JButtonOK_actionPerformed(event);
         }
     }
 
@@ -68,14 +91,8 @@ public class BankAccountForm extends DefaultAccountForm {
 
     }
 
-    class SymAction implements ActionListener {
-
-        public void actionPerformed(ActionEvent event) {
-            JButtonOK_actionPerformed(event);
-        }
-    }
-
-    void JButtonOK_actionPerformed(ActionEvent event) {
+    @Override
+    public void JButtonOK_actionPerformed(ActionEvent event) {
         setAccountNumber(JTextField_ACNR.getText());
         setName(JTextField_NAME.getText());
         setStreet(JTextField_STR.getText());
@@ -83,15 +100,21 @@ public class BankAccountForm extends DefaultAccountForm {
         setState(JTextField_ST.getText());
         setZip(JTextField_ZIP.getText());
         setEmail(JTextField_EM.getText());
-        
-//        IFactory factory = (JRadioButton_Chk.isSelected()) ? new SavingsBankFactory() 
-//                : new Checking;
-//        IParty customer = factory.createCustomer(this);
-//        
-//        ICommand addDefault = new AddDefaulAccountCommand(this.receiver, customer);
-//        invoker.submit(addDefault);
+
+        IFactory factory = new BankFactory();
+        IParty customer = factory.createCustomer(this);
+        ICommand addCustomer = new AddBankCustomerCommand(this.receiver, customer);
+        invoker.submit(addCustomer);
 //        this.receiver.print();
-        
+
+    }
+
+    public JRadioButton getJRadioButton_Chk() {
+        return JRadioButton_Chk;
+    }
+
+    public String getCustomerType() {
+        return customerType;
     }
 
 }

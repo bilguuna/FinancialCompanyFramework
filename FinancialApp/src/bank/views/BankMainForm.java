@@ -31,7 +31,7 @@ public class BankMainForm extends MainForm implements Observer {
 
     @Override
     public void updateView() {
-        refreshLIst();;
+        refreshLIst();
     }
     
     class SymAction implements ActionListener {

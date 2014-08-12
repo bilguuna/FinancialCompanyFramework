@@ -7,6 +7,7 @@
 package bank.models;
 
 import framework.Customer;
+import framework.IAccount;
 import framework.ICompany;
 
 /**
@@ -16,9 +17,10 @@ import framework.ICompany;
 public class CustomerCompany extends Customer implements ICompany {
     private int numberOfEmp;
 
-    public CustomerCompany(String name, String street, String city, String State, String zip, String email, int numberOfEmp) {
+    public CustomerCompany(String name, String street, String city, String State, String zip, String email, int numberOfEmp, IAccount account) {
         super(name, street, city, State, zip, email);
         this.numberOfEmp = numberOfEmp;
+        super.addAccount(account);
     }
 
     

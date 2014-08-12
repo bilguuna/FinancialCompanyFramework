@@ -139,7 +139,7 @@ public class DefaultAccountForm extends JDialog {
         }
     }
 
-    void JButtonOK_actionPerformed(ActionEvent event) {
+    public void JButtonOK_actionPerformed(ActionEvent event) {
         accountNumber = JTextField_ACNR.getText();
         name = JTextField_NAME.getText();
         street = JTextField_STR.getText();
