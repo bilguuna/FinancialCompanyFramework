@@ -18,14 +18,12 @@ import framework.view.DefaultAccountForm;
 public class CreditCardCustomerFactory extends AbstractFactory {
 
     @Override
-    public Customer createCustomer(DefaultAccountForm defaultAcc) {
+    public Account createAccount() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Account createAccount() {
+    public Customer createCustomer(Object defaultAcc) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 }
