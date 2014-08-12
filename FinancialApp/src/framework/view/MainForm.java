@@ -32,8 +32,6 @@ public abstract class MainForm extends JFrame {
         
     public MainForm(String title) {
 
-        framework = this;
-
         setTitle(title);
         setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout(0, 0));
@@ -42,11 +40,6 @@ public abstract class MainForm extends JFrame {
         JPanel1.setLayout(null);
         getContentPane().add(BorderLayout.CENTER, JPanel1);
         JPanel1.setBounds(0, 0, 575, 310);
-        /*
-         /Add five buttons on the pane 
-         /for Adding personal account, Adding company account
-         /Deposit, Withdraw and Exit from the system
-         */
         JScrollPane1 = new JScrollPane();
         newaccount = false;
 
@@ -57,8 +50,6 @@ public abstract class MainForm extends JFrame {
         drawColumns();
 //        drawButtons();
         
-//        rowdata = new Object[8];
-
         JButton_Deposit.setText("Deposit");
         JPanel1.add(JButton_Deposit);
         JButton_Deposit.setBounds(468, 104, 96, 33);
@@ -70,10 +61,6 @@ public abstract class MainForm extends JFrame {
         JButton_Exit.setText("Exit");
         JPanel1.add(JButton_Exit);
         JButton_Exit.setBounds(468, 248, 96, 31);
-        // lineBorder1.setRoundedCorners(true);
-        // lineBorder1.setLineColor(java.awt.Color.green);
-        //$$ lineBorder1.move(24,312);
-
         SymWindow aSymWindow = new SymWindow();
         this.addWindowListener(aSymWindow);
         SymAction lSymAction = new SymAction();
