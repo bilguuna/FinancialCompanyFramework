@@ -1,7 +1,6 @@
 package framework.view;
 
 import framework.*;
-import framework.observer.Observer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
