@@ -6,6 +6,7 @@
 
 package creditcard.views;
 
+import creditcard.models.CreditCardCustomer;
 import framework.Customer;
 import framework.IParty;
 import framework.observer.Observer;
@@ -54,7 +55,7 @@ public class CreditCardForm extends MainForm implements Observer {
             defaultAcc.setBounds(450, 20, 300, 350);
             defaultAcc.setVisible(true);
             defaultAcc.dispose();
-            //refreshLIst();
+            refreshLIst();
         }
     }
 
@@ -75,5 +76,6 @@ public class CreditCardForm extends MainForm implements Observer {
         JButton_addAcc.setText("Add Credit Card Account");
         JPanel1.add(JButton_addAcc);
         JButton_addAcc.setBounds(24, 20, 192, 33);
+        super.JButton_Withdraw.setText("Charge");
     }
 }

@@ -16,7 +16,7 @@ public abstract class MainForm extends JFrame{
 
     protected JPanel JPanel1 = new JPanel();
     private JButton JButton_Deposit = new JButton();
-    private JButton JButton_Withdraw = new JButton();
+    protected JButton JButton_Withdraw = new JButton();
     private JButton JButton_Exit = new JButton();
     protected DefaultTableModel model;
     protected JTable JTable1;

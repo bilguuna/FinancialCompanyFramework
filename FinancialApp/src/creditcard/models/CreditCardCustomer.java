@@ -61,7 +61,8 @@ public class CreditCardCustomer extends DefaultCustomer {
     
     @Override
     public Object[] getData() {
-        return new Object[]{getAccount().getAccountNumber(), getName(), getCcNumber(), dateFormat.format(getExpireDate()), "Credit Card", 0};
+        return new Object[]{getAccount().getAccountNumber(), getName(), getCcNumber(), 
+            dateFormat.format(getExpireDate()), "Credit Card", getAccount().getBalance()};
     }
 
     @Override
