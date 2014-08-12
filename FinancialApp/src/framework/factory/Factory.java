@@ -6,7 +6,7 @@ import framework.DefaultAccount;
 import framework.view.DefaultAccountForm;
 import framework.DefaultCustomer;
 
-public class Factory extends AbstractFactory{
+public class Factory extends AbstractFactory {
 
     @Override
     public Customer createCustomer(DefaultAccountForm defaultAcc) {
