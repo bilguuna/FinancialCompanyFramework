@@ -21,16 +21,9 @@ public abstract class MainForm extends JFrame{
     protected DefaultTableModel model;
     protected JTable JTable1;
     protected JScrollPane JScrollPane1;
-
-    private MainForm framework;
-    private boolean newaccount;
-    private Object rowdata[];
     protected Invoker invoker = new Invoker();
     protected Receiver receiver = new Receiver();
-    private String title;
-    
-    //private Template template;
-        
+
     public MainForm(String title) {
 
         setTitle(title);
@@ -42,8 +35,6 @@ public abstract class MainForm extends JFrame{
         getContentPane().add(BorderLayout.CENTER, JPanel1);
         JPanel1.setBounds(0, 0, 575, 310);
         JScrollPane1 = new JScrollPane();
-        newaccount = false;
-
         JPanel1.add(JScrollPane1);
         JScrollPane1.setBounds(12, 92, 444, 160);
        
