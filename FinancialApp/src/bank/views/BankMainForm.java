@@ -30,13 +30,11 @@ public class BankMainForm extends MainForm implements Observer {
     JButton JButton_CompAC = new javax.swing.JButton();
     JButton JButton_Addinterest = new javax.swing.JButton();
     private SymAction lSymAction = new SymAction();
-    private Receiver receiver;
-
+    
     public BankMainForm(String title) {
         super(title);
         drawButtons();
-        receiver = Receiver.getInstance();
-        receiver.addObserver(this);
+        Receiver.getInstance().addObserver(this);
         JButton_PerAC.addActionListener(lSymAction);
         JButton_CompAC.addActionListener(lSymAction);
         JButton_Addinterest.addActionListener(lSymAction);
@@ -45,7 +43,7 @@ public class BankMainForm extends MainForm implements Observer {
     @Override
     public void updateView() {
         model.setRowCount(0);
-        Vector<IParty> customers = receiver.getCustomerList();
+        Vector<IParty> customers = this.getReceiver().getCustomerList();
         Iterator it = customers.iterator();
         while (it.hasNext()) {
             Customer cus = (Customer) it.next();
@@ -59,10 +57,10 @@ public class BankMainForm extends MainForm implements Observer {
         public void actionPerformed(ActionEvent event) {
             Object object = event.getSource();
             if (object == JButton_Addinterest) {
-                ICommand addInterestCommand = new AddInterestCommand(receiver);
+                ICommand addInterestCommand = new AddInterestCommand();
                 invoker.submit(addInterestCommand);
             } else {
-                DefaultAccountForm bankAccount = new BankAccountForm(invoker, receiver, ((JButton) object).getActionCommand());
+                DefaultAccountForm bankAccount = new BankAccountForm(invoker, ((JButton) object).getActionCommand());
                 bankAccount.setBounds(450, 20, 300, 350);
                 bankAccount.setVisible(true);
                 bankAccount.dispose();

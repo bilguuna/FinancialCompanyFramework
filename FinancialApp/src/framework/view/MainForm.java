@@ -150,5 +150,9 @@ public abstract class MainForm extends JFrame{
             model.addRow(cus.getData());            
         }
     }
+    
+    public Receiver getReceiver() {
+        return this.receiver;
+    }
 
 }

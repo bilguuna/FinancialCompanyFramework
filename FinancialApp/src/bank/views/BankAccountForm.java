@@ -26,12 +26,10 @@ public class BankAccountForm extends DefaultAccountForm {
     private String customerType;
     javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
     javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
-    private Receiver receiver;
     private Invoker invoker;
 
-    public BankAccountForm(Invoker invoker, Receiver receiver, String customerType) {
-        super(invoker, receiver);
-        this.receiver = receiver;
+    public BankAccountForm(Invoker invoker, String customerType) {
+        super(invoker, Receiver.getInstance());
         this.invoker = invoker;
         this.customerType = customerType;
         JRadioButton_Chk.setText("Checkings");
@@ -100,7 +98,7 @@ public class BankAccountForm extends DefaultAccountForm {
 
         IFactory factory = new BankFactory();
         IParty customer = factory.createCustomer(this);
-        ICommand addCustomer = new AddBankCustomerCommand(this.receiver, customer);
+        ICommand addCustomer = new AddBankCustomerCommand(customer);
         invoker.submit(addCustomer);
     }
 

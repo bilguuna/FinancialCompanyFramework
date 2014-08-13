@@ -1,19 +1,16 @@
 package bank.commands;
 
-import framework.command.*;
 import framework.Receiver;
+import framework.command.*;
 
 public class AddInterestCommand implements ICommand {
     
-    private Receiver receiver;
-    
-    public AddInterestCommand(Receiver receiver) {
-        this.receiver = receiver;
-    }
+    public AddInterestCommand() {
+        }
     
     @Override
     public void execute() {
-        receiver.addInterest();
+        Receiver.getInstance().addInterest();
     }
     
 }

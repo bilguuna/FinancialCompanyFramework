@@ -9,14 +9,13 @@ public class AddBankCustomerCommand implements ICommand {
     private Receiver receiver;
     private IParty customer;
 
-    public AddBankCustomerCommand(Receiver receiver, IParty customer) {
-        this.receiver = receiver;
+    public AddBankCustomerCommand(IParty customer) {
         this.customer = customer;
     }
     
     @Override
     public void execute() {
-        receiver.add(customer);
+        Receiver.getInstance().add(customer);
     }
     
 }
