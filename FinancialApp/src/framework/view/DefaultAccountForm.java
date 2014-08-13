@@ -3,9 +3,10 @@ package framework.view;
 import framework.IParty;
 import framework.Invoker;
 import framework.Receiver;
-import framework.command.ICommand;
 import framework.command.AddDefaulAccountCommand;
+import framework.command.ICommand;
 import framework.factory.Factory;
+import framework.factory.IFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -148,7 +149,7 @@ public class DefaultAccountForm extends JDialog {
         zip = JTextField_ZIP.getText();
         email = JTextField_EM.getText();
         
-        Factory factory = new Factory();
+        IFactory factory = new Factory();
         IParty customer = factory.createCustomer(this);
         
         ICommand addDefault = new AddDefaulAccountCommand(customer);
