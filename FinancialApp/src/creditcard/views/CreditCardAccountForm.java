@@ -5,19 +5,16 @@
  */
 package creditcard.views;
 
-import ccard.JDialog_AddCCAccount;
 import creditcard.factory.CreditCardFactory;
 import framework.IParty;
 import framework.Invoker;
 import framework.Receiver;
 import framework.command.AddDefaulAccountCommand;
 import framework.command.ICommand;
-import framework.factory.Factory;
 import framework.view.DefaultAccountForm;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
