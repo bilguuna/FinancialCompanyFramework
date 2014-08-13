@@ -5,9 +5,6 @@
  */
 package framework.testing;
 
-import bank.models.CustomerCompany;
-import bank.models.CustomerPerson;
-import bank.views.BankAccountForm;
 import framework.Customer;
 import framework.Invoker;
 import framework.Receiver;
