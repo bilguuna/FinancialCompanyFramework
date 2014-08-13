@@ -5,3 +5,5 @@ FinancialApp/nbproject/project.properties
 FinancialApp/dist/README.TXT
 FinancialApp/nbproject/project.properties
 *.properties
+/FinancialApp/build/
+/FinancialApp/dist/
