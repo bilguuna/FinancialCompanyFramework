@@ -6,10 +6,8 @@
 
 package creditcard.models;
 
-import framework.Customer;
 import framework.DefaultCustomer;
 import framework.IAccount;
-import framework.IParty;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

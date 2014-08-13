@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/factory/CreditCardCustomerFactory.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/DefaultCustomer.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/CreditCardApp.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/Customer.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/bank/AddDefaultAccount.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/factory/AbstractFactory.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/observer/Observer.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/view/FrameworkMainForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/view/DefaultAccountForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/views/CreditCardAccountForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/factory/IFactory.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/bank/BankFrm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/FinancialApp.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/views/CreditCardForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/factory/Factory.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/models/CreditCardCustomer.java</file>
+        </group>
+    </open-files>
+</project-private>

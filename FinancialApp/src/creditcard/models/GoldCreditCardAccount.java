@@ -6,28 +6,20 @@
 
 package creditcard.models;
 
-import framework.IAccount;
-
 /**
  *
  * @author JChimidregzen
  */
-public class GoldCreditAccount extends CreditCardAccount {
+public class GoldCreditCardAccount extends CreditCardAccount {
     
     private double x;
     private double y;
     
-    public GoldCreditAccount(String accountNumber, String cardType) {
+    public GoldCreditCardAccount(String accountNumber, String cardType) {
         super(accountNumber, cardType);
         x = 0.05;
         y = 0.12;
     }
-
-//    @Override
-//    public double getNewMonthlyBalance(IAccount account) {
-//        for()
-//        return 0;
-//    }
 
     @Override
     public double getMonthlyAmountDue() {
