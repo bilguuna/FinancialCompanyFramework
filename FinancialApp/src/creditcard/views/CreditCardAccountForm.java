@@ -47,7 +47,7 @@ public class CreditCardAccountForm extends DefaultAccountForm {
         super(invoker, receiver);
         this.invoker = invoker;
         this.receiver = receiver;
-        setMinimumSize(new Dimension(300, 386));
+        setMinimumSize(new Dimension(300, 400));
         dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         
         JRadioButton_Gold.setText("Gold");

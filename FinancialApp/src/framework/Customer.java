@@ -1,6 +1,7 @@
 package framework;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class Customer implements IParty {
@@ -90,7 +91,6 @@ public abstract class Customer implements IParty {
             return null;
         return this.accounts.get(0);
     }
-    
     
     @Override
     public String toString() {

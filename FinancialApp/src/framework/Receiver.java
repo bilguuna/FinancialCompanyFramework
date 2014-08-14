@@ -52,17 +52,17 @@ public class Receiver {
         updateView();
     }
 
-    public void deposit(String accountNumber, double value) {
-        Customer customer = this.getCustomerByAccountNumber(accountNumber);
-        customer.getAccounts().get(0).deposit(value);
-        updateView();
-    }
-
-    public void withdraw(String accountNumber, double value) {
-        Customer customer = this.getCustomerByAccountNumber(accountNumber);
-        customer.getAccounts().get(0).withdraw(value);
-        updateView();
-    }
+//    public void deposit(String accountNumber, double value) {
+//        Customer customer = this.getCustomerByAccountNumber(accountNumber);
+//        customer.getAccounts().get(0).deposit(value, "");
+//        updateView();
+//    }
+//
+//    public void withdraw(String accountNumber, double value) {
+//        Customer customer = this.getCustomerByAccountNumber(accountNumber);
+//        customer.getAccounts().get(0).withdraw(value);
+//        updateView();
+//    }
     
     public void addInterest() {
         for(IParty party : getCustomerList()) {
