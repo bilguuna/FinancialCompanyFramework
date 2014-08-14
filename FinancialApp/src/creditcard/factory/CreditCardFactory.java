@@ -33,14 +33,14 @@ public class CreditCardFactory<T> extends AbstractFactory<T> {
         if(form.getCardType().equalsIgnoreCase("gold"))
             return new CreditCardCustomer(form.getName(), form.getStreet(), 
                 form.getCity(), form.getState(), form.getZip(), form.getEmail(), 
-                new GoldCreditCardAccount(form.getAccountNumber(), form.getCardType()), form.getCcNumber(), form.getExpireDate());
+                new GoldCreditCardAccount(form.getAccountNumber(), form.getCardType()), form.getCcnr(), form.getExpDate());
         else if(form.getCardType().equalsIgnoreCase("silver"))
             return new CreditCardCustomer(form.getName(), form.getStreet(), 
                 form.getCity(), form.getState(), form.getZip(), form.getEmail(), 
-                new SilverCreditCardAccount(form.getAccountNumber(), form.getCardType()), form.getCcNumber(), form.getExpireDate());
+                new SilverCreditCardAccount(form.getAccountNumber(), form.getCardType()), form.getCcnr(), form.getExpDate());
         else
             return new CreditCardCustomer(form.getName(), form.getStreet(), 
                 form.getCity(), form.getState(), form.getZip(), form.getEmail(), 
-                new BronzeCreditCardAccount(form.getAccountNumber(), form.getCardType()), form.getCcNumber(), form.getExpireDate());
+                new BronzeCreditCardAccount(form.getAccountNumber(), form.getCardType()), form.getCcnr(), form.getExpDate());
     }
 }

@@ -17,8 +17,8 @@ public class GoldCreditCardAccount extends CreditCardAccount {
     
     public GoldCreditCardAccount(String accountNumber, String cardType) {
         super(accountNumber, cardType);
-        x = 0.05;
-        y = 0.12;
+        x = 0.06;
+        y = 0.1;
     }
 
     @Override
