@@ -11,8 +11,6 @@ import framework.Invoker;
 import framework.Receiver;
 import framework.command.AddDefaulAccountCommand;
 import framework.command.ICommand;
-import framework.factory.Factory;
-import framework.factory.IFactory;
 import framework.view.DefaultAccountForm;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
