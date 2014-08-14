@@ -17,7 +17,7 @@ public class SilverCreditCardAccount extends CreditCardAccount {
     
     public SilverCreditCardAccount(String accountNumber, String cardType) {
         super(accountNumber, cardType);
-        x = 0.05;
+        x = 0.08;
         y = 0.12;
     }
 

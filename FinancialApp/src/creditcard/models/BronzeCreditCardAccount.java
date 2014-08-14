@@ -17,8 +17,8 @@ public class BronzeCreditCardAccount extends CreditCardAccount {
     
     public BronzeCreditCardAccount(String accountNumber, String cardType) {
         super(accountNumber, cardType);
-        x = 0.05;
-        y = 0.12;
+        x = 0.1;
+        y = 0.14;
     }
 
     @Override

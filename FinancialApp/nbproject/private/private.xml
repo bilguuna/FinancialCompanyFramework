@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/MUM/Courses/ASD/Project/FinancialCompanyFramework/FinancialApp/test/bank/testing/BankTest.java</file>
-            <file>file:/D:/Projects/MUM/Courses/ASD/Project/FinancialCompanyFramework/FinancialApp/src/bank/views/BankAccountForm.java</file>
-            <file>file:/D:/Projects/MUM/Courses/ASD/Project/FinancialCompanyFramework/FinancialApp/src/bank/factory/BankFactory.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/framework/view/DefaultAccountForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/views/CreditCardAccountForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/bank/views/BankAccountForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/views/GenerateBillsForm.java</file>
+            <file>file:/Users/javkhlant/Downloads/FinancialCompanyFramework/FinancialApp/src/creditcard/views/CCAccountForm.java</file>
         </group>
     </open-files>
 </project-private>

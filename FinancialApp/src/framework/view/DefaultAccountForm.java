@@ -13,14 +13,13 @@ import javax.swing.*;
 
 public class DefaultAccountForm extends JDialog {
     
-    JLabel JLabel1 = new JLabel();
-    JLabel JLabel2 = new JLabel();
-    JLabel JLabel3 = new JLabel();
-    JLabel JLabel4 = new JLabel();
-    JLabel JLabel5 = new JLabel();
-    JLabel JLabel6 = new JLabel();
-    JLabel JLabel7 = new JLabel();
-    JLabel JLabel8 = new JLabel();
+    protected JLabel JLabel1 = new JLabel();
+    protected JLabel JLabel2 = new JLabel();
+    protected JLabel JLabel3 = new JLabel();
+    protected JLabel JLabel4 = new JLabel();
+    protected JLabel JLabel5 = new JLabel();
+    protected JLabel JLabel7 = new JLabel();
+    protected JLabel JLabel8 = new JLabel();
     protected JTextField JTextField_NAME = new JTextField();
     protected JTextField JTextField_CT = new JTextField();
     protected JTextField JTextField_ST = new JTextField();
@@ -28,7 +27,7 @@ public class DefaultAccountForm extends JDialog {
     protected JTextField JTextField_ZIP = new JTextField();
     protected JTextField JTextField_EM = new JTextField();
     protected JButton JButton_OK = new JButton();
-    JButton JButton_Calcel = new JButton();
+    protected JButton JButton_Calcel = new JButton();
     protected JTextField JTextField_ACNR = new JTextField();
     
     private String accountNumber;
