@@ -30,7 +30,7 @@ public class GenerateBillsForm extends JDialog {
     private JTextArea JTextArea1;
     private JButton JButton_OK;
     
-    private String billstring;
+    private String billstring = "";
 
     public GenerateBillsForm(Receiver receiver, Invoker invoker) {
         this.receiver = receiver;
@@ -64,7 +64,7 @@ public class GenerateBillsForm extends JDialog {
             CreditCardAccount account = (CreditCardAccount) customer.getAccount();
             double totalDeposit = account.getTotalAddedMoneyByMonth(currentMonth, "deposit");
             double totalWithdraw = account.getTotalAddedMoneyByMonth(currentMonth, "withdraw");
-            billstring = "Name= " + customer.getName() + "\r\n";
+            billstring += "Name= " + customer.getName() + "\r\n";
             billstring += "Address= " + customer.getStreet() + ", " + 
                     customer.getCity() + ", " + customer.getState() + ", " + 
                     customer.getZip() + "\r\n";
